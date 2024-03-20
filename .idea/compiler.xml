@@ -17,6 +17,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="appAuth" options="-parameters" />
       <module name="appStudnet" options="-parameters" />
+      <module name="appTrainer" options="-parameters" />
       <module name="eurekaServer" options="-parameters" />
     </option>
   </component>
