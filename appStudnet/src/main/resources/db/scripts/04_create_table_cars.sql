@@ -6,4 +6,5 @@ CREATE TABLE IF NOT EXISTS cars (
     prod_year INTEGER NOT NULL,
     mileage INTEGER NOT NULL,
     last_maintenance_mileage INTEGER NOT NULL
+--     dorzucić tankowanie i usterki
 )
