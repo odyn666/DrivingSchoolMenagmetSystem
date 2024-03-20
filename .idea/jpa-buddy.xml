@@ -3,5 +3,10 @@
   <component name="JpaBuddyIdeaProjectConfig">
     <option name="defaultUnitInitialized" value="true" />
     <option name="renamerInitialized" value="true" />
+    <option name="snapshotDbValue" value="5f37733d-fbf1-47b7-bf11-1cbb0d95be26" />
+    <option name="snapshotModelValue" value="Default" />
+    <option name="reverseEngineeringLastDbConnectionId" value="5f37733d-fbf1-47b7-bf11-1cbb0d95be26" />
+    <option name="reLastEntityCreationPackage" value="appStudnet/src/main/java/com/github/odyn666/apptrainer" />
+    <option name="newEntityIdStrategy" value="Identity" />
   </component>
 </project>
