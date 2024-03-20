@@ -12,5 +12,5 @@ CREATE TABLE IF NOT EXISTS students (
     exams_failed INTEGER,
     lessons_attended INTEGER,
     lessons_ommited INTEGER,
-    exam_passed VARCHAR(128)
+    exam_passed BOOLEAN
 )
