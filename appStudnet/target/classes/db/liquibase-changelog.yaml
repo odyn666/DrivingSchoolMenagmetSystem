@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: 01_create_table_students
+      author: postgres
+      changes:
+        - sqlFile:
+            path: scripts/01_create_table_students.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
