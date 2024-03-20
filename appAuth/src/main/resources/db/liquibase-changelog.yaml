@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: 01_create_table_goals
+      author: postgres
+      changes:
+        - sqlFile:
+            path: scripts/01_create_table_goals.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
