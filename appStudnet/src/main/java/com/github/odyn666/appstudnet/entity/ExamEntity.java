@@ -1,5 +1,6 @@
 package com.github.odyn666.appstudnet.entity;
 
+import com.github.odyn666.appstudnet.entity.enums.ExamType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +12,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Exam {
+public class ExamEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

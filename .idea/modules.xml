@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/DrivingSchoolService.iml" filepath="$PROJECT_DIR$/.idea/DrivingSchoolService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/appStudnet/appStudnet.iml" filepath="$PROJECT_DIR$/appStudnet/appStudnet.iml" />
     </modules>
   </component>
 </project>
