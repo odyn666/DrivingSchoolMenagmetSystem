@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS schedules_students (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
     student_id INTEGER,
     date DATE,
     starting_hour VARCHAR(128),
