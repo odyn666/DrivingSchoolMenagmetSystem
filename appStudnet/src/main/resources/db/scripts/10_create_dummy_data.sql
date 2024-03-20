@@ -67,7 +67,7 @@ INSERT INTO trainers(first_name,
                      email,
                      password,
                      status,
-                     coursants_passability,
+                     students_pass_rate,
                      car_id)
 VALUES ('Bogdan',
         'Boner',
