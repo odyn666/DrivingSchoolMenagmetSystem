@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS payments (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    payment_uid UID,
+    payment_uid VARCHAR(255),
     student_id INTEGER,
     amount INTEGER,
     hours INTEGER,
