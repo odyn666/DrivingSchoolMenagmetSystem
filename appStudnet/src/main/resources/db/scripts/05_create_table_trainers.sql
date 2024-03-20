@@ -8,5 +8,6 @@ CREATE TABLE IF NOT EXISTS trainers (
     password VARCHAR(128),
     status VARCHAR(128),
     courstantsPassability INTEGER,
-    car_id INTEGER
+    car_id INTEGER,
+    FOREIGN KEY(car_id) REFERENCES cars(id)
 )
