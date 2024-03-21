@@ -54,6 +54,9 @@ public class StudentEntity {
     @Column(name = "is_finial_exam_passed", nullable = false)
     private Boolean isFinialExamPassed;
 
+    @OneToMany(mappedBy = "student")
+    private List<LessonEntity> lessons;
+
     @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SchedulesStudentsEntity> schedulesID;
 

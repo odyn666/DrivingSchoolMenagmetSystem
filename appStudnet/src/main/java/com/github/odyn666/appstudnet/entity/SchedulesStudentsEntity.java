@@ -22,8 +22,14 @@ public class SchedulesStudentsEntity {
     @ManyToOne
     @JoinColumn(name = "STUDENT_ID")
     private StudentEntity student;
+
+    @Column(name = "DATE")
     private Date date;
+
+    @Column(name = "STARTING_HOUR")
     private Timestamp startingHour;
+
+    @Column(name = "ENDING_HOUR")
     private Timestamp endingHour;
 
 }

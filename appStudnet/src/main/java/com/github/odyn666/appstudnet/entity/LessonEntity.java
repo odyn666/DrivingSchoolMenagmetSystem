@@ -19,13 +19,19 @@ public class LessonEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "TRAINER_ID", nullable = false)
     @ManyToOne
+    @Column(name = "TRAINER_ID")
     private TrainerEntity trainer;
-    @OneToOne
+
+    @ManyToOne
+    @Column(name = "STUDENT_ID")
     private StudentEntity student;
+    @Column(name = "DATE")
     private Date date;
+    @Column(name = "STARTING_HOUR")
     private String startingHour;
+    @Column(name = "ENDING_HOUR")
     private String endingHour;
+    @Column(name = "STATUS")
     private Status status;
 }
