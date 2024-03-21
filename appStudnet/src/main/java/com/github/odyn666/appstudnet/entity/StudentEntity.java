@@ -45,14 +45,15 @@ public class StudentEntity {
     @Column(name = "HOURSDRIVEN", nullable = false)
     private Integer hoursDriven;
 
-    @OneToMany(mappedBy = "student_id", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Column(name = "exams", nullable = false)
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ExamEntity> exams;
 
     @Column(name = "lessons_attended")
     private Short lessonsAttended;
+
     @Column(name = "lessons_omitted")
     private Short lessonsOmitted;
+
     @Column(name = "is_finial_exam_passed", nullable = false)
     private Boolean isFinialExamPassed;
 

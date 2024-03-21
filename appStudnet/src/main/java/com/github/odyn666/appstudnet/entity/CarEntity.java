@@ -36,6 +36,5 @@ public class CarEntity {
     private Integer lastMaintenanceMileage;
 
     @OneToOne
-    @Column(name = "TRAINER_ID")
     private TrainerEntity trainer;
 }

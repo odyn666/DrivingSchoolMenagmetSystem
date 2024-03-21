@@ -23,7 +23,7 @@ public class SchedulesTrainerEntity {
     @ManyToOne
     @JsonBackReference
     @JoinColumn(name = "TRAINER_ID", referencedColumnName = "ID")
-    private TrainerEntity trainerID;
+    private TrainerEntity trainer;
 
     @Column(name = "DATE")
     private Date date;

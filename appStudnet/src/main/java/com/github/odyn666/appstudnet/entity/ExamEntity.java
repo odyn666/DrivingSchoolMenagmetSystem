@@ -23,8 +23,9 @@ public class ExamEntity {
     private ExamType examType;
 
     @ManyToOne
-    @Column(name = "STUDENT_ID", nullable = false)
+    @JoinColumn(name = "STUDENT_ID", nullable = false, referencedColumnName = "ID")
     private StudentEntity student;
+
     @Column(name = "IS_PASSED", nullable = false)
     private Boolean isPassed;
 
