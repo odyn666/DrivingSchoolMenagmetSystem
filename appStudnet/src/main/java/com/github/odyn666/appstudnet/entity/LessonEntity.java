@@ -18,8 +18,10 @@ public class LessonEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "TRAINER_ID", nullable = false)
     @ManyToOne
-    private TrainerEntity trainerID;
+    private TrainerEntity trainer;
     @OneToOne
     private StudentEntity student;
     private Date date;

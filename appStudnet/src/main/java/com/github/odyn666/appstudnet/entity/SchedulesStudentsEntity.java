@@ -18,8 +18,10 @@ public class SchedulesStudentsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @ManyToOne
-    private StudentEntity studentID;
+    @JoinColumn(name = "STUDENT_ID")
+    private StudentEntity student;
     private Date date;
     private Timestamp startingHour;
     private Timestamp endingHour;

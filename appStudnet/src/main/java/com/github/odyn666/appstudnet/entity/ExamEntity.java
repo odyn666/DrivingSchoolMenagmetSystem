@@ -17,19 +17,20 @@ public class ExamEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "exam_type", nullable = false)
+    @Column(name = "EXAM_TYPE", nullable = false)
     @Enumerated(EnumType.STRING)
     private ExamType examType;
 
     @ManyToOne
-    private StudentEntity student_id;
-    @Column(name = "is_passed", nullable = false)
+    @Column(name = "STUDENT_ID", nullable = false)
+    private StudentEntity student;
+    @Column(name = "IS_PASSED", nullable = false)
     private Boolean isPassed;
 
-    @Column(name = "score", nullable = false)
+    @Column(name = "SCORE", nullable = false)
     private Short score;
 
-    @Column(name = "description", length = 255)
+    @Column(name = "DESCRIPTION", length = 255)
     private String description;
 
 

@@ -15,12 +15,19 @@ public class CarEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "PLATES")
     private String plates;
+    @Column(name = "BRAND")
     private String brand;
+    @Column(name = "MODEL")
     private String model;
-    private int prodYear;
-    private int mileage;
-    private int lastMaintenanceMileage;
+    @Column(name = "PROD_YEAR")
+    private Integer prodYear;
+    @Column(name = "MILAGE")
+    private Integer mileage;
+    @Column(name = "LAST_MAINTENANCE_MILEAGE")
+    private Integer lastMaintenanceMileage;
     @OneToOne
-    private TrainerEntity trainerID;
+    @Column(name = "TRAINER_ID")
+    private TrainerEntity trainer;
 }
