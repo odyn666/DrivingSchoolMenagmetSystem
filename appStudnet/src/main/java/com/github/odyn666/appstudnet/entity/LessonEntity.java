@@ -27,7 +27,7 @@ public class LessonEntity {
     private TrainerEntity trainer;
 
     @ManyToOne
-    @Column(name = "STUDENT_ID")
+    @JoinColumn(name = "STUDENT_ID", referencedColumnName = "ID")
     private StudentEntity student;
 
     @Column(name = "DATE")

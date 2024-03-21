@@ -45,19 +45,19 @@ public class TrainerEntity {
     @Column(name = "STUDENTS_PASS_RATE")
     private Integer studentsPassRate;
 
-    @OneToOne(mappedBy = "carId")
+    @OneToOne(mappedBy = "trainer")
     @JoinColumn(name = "car_id", referencedColumnName = "id")
     private CarEntity carId;
 
-    @OneToMany(mappedBy = "trainerID", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "trainer", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<SchedulesTrainerEntity> trainTrainerSchedules;
 
-    @OneToMany(mappedBy = "trainerID", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "trainer", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<LessonEntity> lessons;
 
-    @OneToMany(mappedBy = "trainerID", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "trainer", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<TrainerOpinions> trainerOpinions;
 }
