@@ -21,8 +21,11 @@ public class StudentEntity {
     @Column(name = "FIRST_NAME", nullable = false)
     private String firstName;
 
-    @Column(name = "LAST_NAME", nullable=false)
+    @Column(name = "LAST_NAME", nullable = false)
     private String lastName;
+
+    @Column(name = "PKK_NUMBER", nullable = false, unique = true)
+    private String pkkNumber;
 
     @Column(name = "EMAIL", nullable = false, unique = true)
     private String email;
@@ -59,7 +62,6 @@ public class StudentEntity {
 
     @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SchedulesStudentsEntity> schedulesID;
-
 }
 
 
