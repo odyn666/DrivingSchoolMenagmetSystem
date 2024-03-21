@@ -1,10 +1,91 @@
 databaseChangeLog:
   - changeSet:
-      id: 01_create_table_goals
+      id: 01_create_table_students
       author: postgres
       changes:
         - sqlFile:
-            path: scripts/01_create_table_goals.sql
+            path: scripts/01_create_table_students.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+  - changeSet:
+      id: 02_create_table_payments
+      author: postgres
+      changes:
+        - sqlFile:
+            path: scripts/02_create_table_payments.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+  - changeSet:
+      id: 03_create_table_schedules_student
+      author: postgres
+      changes:
+        - sqlFile:
+            path: scripts/03_create_table_schedules_student.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+  - changeSet:
+      id: 04_create_table_cars
+      author: postgres
+      changes:
+        - sqlFile:
+            path: scripts/04_create_table_cars.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+  - changeSet:
+      id: 05_create_table_trainers
+      author: postgres
+      changes:
+        - sqlFile:
+            path: scripts/05_create_table_trainers.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+  - changeSet:
+      id: 06_create_table_schedules_trainer
+      author: postgres
+      changes:
+        - sqlFile:
+            path: scripts/06_create_table_schedules_trainer.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+  - changeSet:
+      id: 07_create_table_lessons
+      author: postgres
+      changes:
+        - sqlFile:
+            path: scripts/07_create_table_lessons.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+  - changeSet:
+      id: 08_create_table_exams
+      author: postgres
+      changes:
+        - sqlFile:
+            path: scripts/08_create_table_exams.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+  - changeSet:
+      id: 09_create_table_trainers_opinions
+      author: postgres
+      changes:
+        - sqlFile:
+            path: scripts/09_create_table_trainers_opinions.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+  - changeSet:
+      id: 10_create_dummy_data
+      author: postgres
+      changes:
+        - sqlFile:
+            path: scripts/10_create_dummy_data.sql
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
