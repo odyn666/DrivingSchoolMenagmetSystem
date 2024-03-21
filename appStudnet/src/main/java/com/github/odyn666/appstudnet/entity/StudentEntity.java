@@ -57,5 +57,7 @@ public class StudentEntity {
     @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SchedulesStudentsEntity> schedulesID;
 
-
 }
+
+
+

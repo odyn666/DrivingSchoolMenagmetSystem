@@ -26,7 +26,12 @@ public class TrainerEntity {
     private String status;
     private Integer studentsPassRate;
     private Integer carId;
-    @OneToMany(mappedBy = "trainerId", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "trainerID", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SchedulesTrainerEntity> trainTrainerSchedules;
+    @OneToMany(mappedBy = "trainerID", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Lessons> lessons;
+    @OneToMany(mappedBy = "trainerID", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TrainerOpinions> trainerOpinions;
 }
+
 //TODO migrate entity to AppTrainer

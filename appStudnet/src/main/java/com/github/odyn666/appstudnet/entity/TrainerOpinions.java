@@ -6,20 +6,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
-
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class SchedulesTrainerEntity {
+public class TrainerOpinions {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @ManyToOne
     private TrainerEntity trainerID;
-    private Date date;
-    private String startingHour;
-    private String endingHour;
+    @OneToOne
+    private StudentEntity studentID;
+    private String opinion;
+
 }
