@@ -15,6 +15,7 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "PAYMENTS")
 public class PaymentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +24,9 @@ public class PaymentEntity {
     @Column(name = "PAYMENT_UUID")
     private UUID paymentUUID;
 
+    @ManyToOne
+    @JoinColumn(name = "STUDENT_ID", referencedColumnName = "ID")
+    private StudentEntity student;
 
     @Column(name = "AMOUNT")
     private Integer amount;
@@ -33,9 +37,10 @@ public class PaymentEntity {
     @Column(name = "DUE_DATE")
     private Date dueDate;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "STATUS")
-    private PaymentStatus status;
+    @Column(name = "PAYMENT_DATE")
+    private Date paymentDate;
 
+    @Column(name = "status")
+    private PaymentStatus status;
 
 }

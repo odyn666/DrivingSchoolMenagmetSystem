@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS payments (
     amount INTEGER,
     hours INTEGER,
     due_date TIMESTAMP,
+    payment_date TIMESTAMP,
     status VARCHAR(128),
     FOREIGN KEY (student_id) REFERENCES students (id)
 )

@@ -1,5 +1,6 @@
 package com.github.odyn666.appstudnet.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.github.odyn666.appstudnet.entity.enums.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -14,47 +15,50 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "trainers")
+@Table(name = "TRAINERS")
 public class TrainerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "first_name")
+    @Column(name = "FIRST_NAME")
     private String firstName;
 
-    @Column(name = "last_name")
+    @Column(name = "LAST_NAME")
     private String lastName;
 
-    @Column(name = "identifier")
+    @Column(name = "IDENTIFIER")
     private String identifier;
 
-    @Column(name = "phone_number")
+    @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
 
-    @Column(name = "email")
+    @Column(name = "EMAIL")
     private String email;
 
-    @Column(name = "password")
+    @Column(name = "PASSWORD")
     private String password;
 
-    @Column(name = "status")
+    @Column(name = "STATUS")
     private Status status;
 
-    @Column(name = "students_pass_rate")
+    @Column(name = "STUDENTS_PASS_RATE")
     private Integer studentsPassRate;
 
-    @OneToOne
-    @JoinColumn(name = "car_id")
+    @OneToOne(mappedBy = "carId")
+    @JoinColumn(name = "car_id", referencedColumnName = "id")
     private CarEntity carId;
 
     @OneToMany(mappedBy = "trainerID", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<SchedulesTrainerEntity> trainTrainerSchedules;
 
     @OneToMany(mappedBy = "trainerID", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<LessonEntity> lessons;
 
     @OneToMany(mappedBy = "trainerID", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<TrainerOpinions> trainerOpinions;
 }
 

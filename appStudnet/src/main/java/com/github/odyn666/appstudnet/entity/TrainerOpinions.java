@@ -1,5 +1,6 @@
 package com.github.odyn666.appstudnet.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,15 +12,22 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
+@Table(name = "trainer_opinions")
 public class TrainerOpinions {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    private TrainerEntity trainerID;
-    @OneToOne
-    private StudentEntity studentID;
+    @JsonBackReference
+    @JoinColumn(name = "trainer_id", referencedColumnName = "id")
+    private TrainerEntity trainer;
+
+    @ManyToOne
+    @JoinColumn(name = "student_id", referencedColumnName = "id")
+    private StudentEntity student;
+
+    @Column(name = "OPINION")
     private String opinion;
 
 }

@@ -1,5 +1,6 @@
 package com.github.odyn666.appstudnet.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,21 +14,23 @@ import java.util.Date;
 @AllArgsConstructor
 @Getter
 @Setter
+@Table(name = "SCHEDULES_TRAINER")
 public class SchedulesTrainerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "trainer_id")
+    @JsonBackReference
+    @JoinColumn(name = "TRAINER_ID", referencedColumnName = "ID")
     private TrainerEntity trainerID;
 
-    @Column(name = "date")
+    @Column(name = "DATE")
     private Date date;
 
-    @Column(name = "starting_hour")
+    @Column(name = "STARTING_HOUR")
     private String startingHour;
 
-    @Column(name = "ending_hour")
+    @Column(name = "ENDING_HOUR")
     private String endingHour;
 }

@@ -12,49 +12,53 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "students")
+@Table(name = "STUDENTS")
 public class StudentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "first_name", nullable = false)
+
+    @Column(name = "FIRST_NAME", nullable = false)
     private String firstName;
-    @Column(name = "last_name", nullable=false)
+    
+    @Column(name = "LAST_NAME", nullable=false)
     private String lastName;
 
-    @Column(name = "email", nullable = false, unique = true)
+    @Column(name = "EMAIL", nullable = false, unique = true)
     private String email;
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "PASSWORD", nullable = false)
     private String password;
 
-    @Column(name = "phone_number", nullable = false)
+    @Column(name = "PHONE_NUMBER", nullable = false)
     private String phoneNumber;
 
-    @Column(name = "status", nullable = false)
+    @Column(name = "STATUS", nullable = false)
     private Status status;
 
-    @Column(name = "hours_left", nullable = false)
+    @Column(name = "HOURS_LEFT", nullable = false)
     private Integer hoursLeft;
 
-    @Column(name = "last_login", nullable = false)
+    @Column(name = "LAST_LOGIN", nullable = false)
     private Date lastLogin;
 
-    @Column(name = "hoursDriven", nullable = false)
+    @Column(name = "HOURSDRIVEN", nullable = false)
     private Integer hoursDriven;
 
-    @OneToMany(mappedBy = "student_id", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Column(name = "exams", nullable = false)
+    @OneToMany(mappedBy = "STUDENT_ID", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Column(name = "EXAMS", nullable = false)
     private List<ExamEntity> exams;
 
-    @Column(name = "lessons_attended")
+    @Column(name = "LESSONS_ATTENDED")
     private Short lessonsAttended;
-    @Column(name = "lessons_omitted")
+
+    @Column(name = "LESSONS_OMITTED")
     private Short lessonsOmitted;
-    @Column(name = "is_finial_exam_passed", nullable = false)
+
+    @Column(name = "IS_FINIAL_EXAM_PASSED", nullable = false)
     private Boolean isFinialExamPassed;
 
-    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "ID", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SchedulesStudentsEntity> schedulesID;
 
 }
