@@ -20,7 +20,7 @@ public class StudentEntity {
 
     @Column(name = "FIRST_NAME", nullable = false)
     private String firstName;
-    
+
     @Column(name = "LAST_NAME", nullable=false)
     private String lastName;
 
@@ -45,20 +45,18 @@ public class StudentEntity {
     @Column(name = "HOURSDRIVEN", nullable = false)
     private Integer hoursDriven;
 
-    @OneToMany(mappedBy = "STUDENT_ID", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Column(name = "EXAMS", nullable = false)
+    @OneToMany(mappedBy = "student_id", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Column(name = "exams", nullable = false)
     private List<ExamEntity> exams;
 
-    @Column(name = "LESSONS_ATTENDED")
+    @Column(name = "lessons_attended")
     private Short lessonsAttended;
-
-    @Column(name = "LESSONS_OMITTED")
+    @Column(name = "lessons_omitted")
     private Short lessonsOmitted;
-
-    @Column(name = "IS_FINIAL_EXAM_PASSED", nullable = false)
+    @Column(name = "is_finial_exam_passed", nullable = false)
     private Boolean isFinialExamPassed;
 
-    @OneToMany(mappedBy = "ID", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SchedulesStudentsEntity> schedulesID;
 
 }

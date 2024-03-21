@@ -1,6 +1,5 @@
 package com.github.odyn666.appstudnet.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.github.odyn666.appstudnet.entity.enums.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

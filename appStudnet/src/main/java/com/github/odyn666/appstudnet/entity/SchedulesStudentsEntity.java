@@ -32,4 +32,5 @@ public class SchedulesStudentsEntity {
 
     @Column(name = "ENDING_HOUR")
     private Timestamp endingHour;
+
 }
