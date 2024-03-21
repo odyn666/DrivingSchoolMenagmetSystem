@@ -3,6 +3,7 @@ package com.github.odyn666.appstudnet.dto;
 import com.github.odyn666.appstudnet.entity.TrainerEntity;
 import com.github.odyn666.appstudnet.entity.TrainerOpinions;
 import jakarta.validation.constraints.NotEmpty;
+import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 import java.util.List;
