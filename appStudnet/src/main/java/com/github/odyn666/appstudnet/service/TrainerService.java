@@ -16,7 +16,7 @@ public class TrainerService {
     private final TrainerRepository trainerRepository;
     private final TrainerMapper trainerMapper;
 
-    private List<TrainerEntityDto> getTrainers() {
+    public List<TrainerEntityDto> getTrainers() {
         List<TrainerEntity> trainers = trainerRepository.findAll();
         return trainers.stream()
                 .map(trainerMapper::toDto)
