@@ -11,6 +11,6 @@ import java.util.List;
 
 @Repository
 @FeignClient("TRAINER-SERVICE")
-public interface TrainerEntityRepository extends JpaRepository<TrainerEntityDto, Long> {
+public interface TrainerEntityRepository extends JpaRepository<TrainerEntity, Long> {
 
 }

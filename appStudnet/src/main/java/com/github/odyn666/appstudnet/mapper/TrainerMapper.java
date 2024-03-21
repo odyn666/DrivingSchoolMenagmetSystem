@@ -19,4 +19,16 @@ public class TrainerMapper {
                 entity.getTrainerOpinions()
         );
     }
+
+    public TrainerEntity toEntity(TrainerEntityDto dto) {
+        TrainerEntity entity = new TrainerEntity();
+        entity.setFirstName(dto.firstName());
+        entity.setLastName(dto.lastName());
+        entity.setIdentifier(dto.identifier());
+        entity.setPhoneNumber(dto.phoneNumber());
+        entity.setEmail(dto.email());
+        entity.setStudentsPassRate(dto.studentsPassRate());
+        entity.setTrainerOpinions(dto.trainerOpinions());
+        return entity;
+    }
 }
