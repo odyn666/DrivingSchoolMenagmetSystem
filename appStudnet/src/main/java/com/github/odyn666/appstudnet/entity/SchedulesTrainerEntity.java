@@ -17,9 +17,17 @@ public class SchedulesTrainerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @ManyToOne
+    @JoinColumn(name = "trainer_id")
     private TrainerEntity trainerID;
+
+    @Column(name = "date")
     private Date date;
+
+    @Column(name = "starting_hour")
     private String startingHour;
+
+    @Column(name = "ending_hour")
     private String endingHour;
 }
