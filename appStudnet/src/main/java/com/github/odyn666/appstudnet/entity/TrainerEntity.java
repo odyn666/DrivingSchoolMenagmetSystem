@@ -25,11 +25,12 @@ public class TrainerEntity {
     private String password;
     private String status;
     private Integer studentsPassRate;
-    private Integer carId;
+    @OneToOne
+    private CarEntity carId;
     @OneToMany(mappedBy = "trainerID", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SchedulesTrainerEntity> trainTrainerSchedules;
     @OneToMany(mappedBy = "trainerID", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Lessons> lessons;
+    private List<LessonEntity> lessons;
     @OneToMany(mappedBy = "trainerID", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TrainerOpinions> trainerOpinions;
 }
