@@ -14,11 +14,4 @@ import java.util.List;
 @RequestMapping("/student")
 @RequiredArgsConstructor
 public class StudentController {
-
-    private final TrainerService trainerService;
-
-    @GetMapping("/trainers")
-    public ResponseEntity<List<TrainerEntityDto>> getTrainers() {
-        return ResponseEntity.ok(trainerService.getTrainers());
-    }
 }

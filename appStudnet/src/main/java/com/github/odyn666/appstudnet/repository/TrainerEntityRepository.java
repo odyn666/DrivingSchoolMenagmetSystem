@@ -1,5 +1,6 @@
 package com.github.odyn666.appstudnet.repository;
 
+import com.github.odyn666.appstudnet.dto.TrainerEntityDto;
 import com.github.odyn666.appstudnet.entity.TrainerEntity;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,8 +11,6 @@ import java.util.List;
 
 @Repository
 @FeignClient("TRAINER-SERVICE")
-public interface TrainerRepository extends JpaRepository<TrainerEntity, Long> {
+public interface TrainerEntityRepository extends JpaRepository<TrainerEntityDto, Long> {
 
-    @GetMapping("/trainer/all")
-    List<TrainerEntity> findAll();
 }
