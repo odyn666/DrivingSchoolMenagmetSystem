@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="appTrainer" />
+        <module name="smsTest" />
         <module name="appStudnet" />
         <module name="eurekaServer" />
         <module name="appAuth" />
@@ -20,6 +21,7 @@
       <module name="appStudnet" options="-parameters" />
       <module name="appTrainer" options="-parameters" />
       <module name="eurekaServer" options="-parameters" />
+      <module name="smsTest" options="-parameters" />
     </option>
   </component>
 </project>
