@@ -62,7 +62,7 @@ public class StudentEntity {
 
     @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SchedulesStudentsEntity> schedulesID;
+
+    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<LessonEntity> lessons;
 }
-
-
-
