@@ -9,4 +9,5 @@
 /.idea/*
 /.idea/jpa-buddy.xml
 /.jpb/
-/appSchool/target/**
+/appStudnet/target/
+/appSchool/target/

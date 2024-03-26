@@ -15,6 +15,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="appStudnet" target="21" />
+      <module name="appTrainer" target="21" />
       <module name="smsTest" target="17" />
     </bytecodeTargetLevel>
   </component>

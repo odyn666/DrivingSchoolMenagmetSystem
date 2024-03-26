@@ -2,6 +2,7 @@ package com.github.odyn666.appSchool.entity;
 
 import com.github.odyn666.appSchool.entity.enums.Status;
 import jakarta.persistence.*;
+import jakarta.ws.rs.DefaultValue;
 import lombok.*;
 
 import java.util.Date;
@@ -46,15 +47,18 @@ public class StudentEntity {
     private Date lastLogin;
 
     @Column(name = "HOURSDRIVEN", nullable = false)
+    @DefaultValue("0")
     private Integer hoursDriven;
 
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ExamEntity> exams;
 
     @Column(name = "lessons_attended")
+    @DefaultValue("0")
     private Short lessonsAttended;
 
     @Column(name = "lessons_omitted")
+    @DefaultValue("0")
     private Short lessonsOmitted;
 
     @Column(name = "is_finial_exam_passed", nullable = false)
