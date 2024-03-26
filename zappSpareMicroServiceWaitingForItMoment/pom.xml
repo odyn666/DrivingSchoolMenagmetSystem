@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.github.odyn666</groupId>
-    <artifactId>appTrainer</artifactId>
+    <artifactId>zappSpareMicroServiceWaitingForItMoment</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>appTrainer</name>
     <description>appTrainer</description>

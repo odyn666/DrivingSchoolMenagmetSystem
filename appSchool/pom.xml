@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.github.odyn666</groupId>
-    <artifactId>appStudnet</artifactId>
+    <artifactId>appSchool</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>appStudnet</name>
     <description>appStudnet</description>
