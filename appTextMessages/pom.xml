@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>sda.proj-konc</groupId>
-    <artifactId>smsTest</artifactId>
+    <artifactId>appTextMessages</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>smsTest</name>
     <description>smsTest</description>
