@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/appStudnet/pom.xml" />
         <option value="$PROJECT_DIR$/appAuth/pom.xml" />
         <option value="$PROJECT_DIR$/smsTest/pom.xml" />
+        <option value="$PROJECT_DIR$/appTextMessages/pom.xml" />
       </list>
     </option>
     <option name="workspaceImportForciblyTurnedOn" value="true" />
