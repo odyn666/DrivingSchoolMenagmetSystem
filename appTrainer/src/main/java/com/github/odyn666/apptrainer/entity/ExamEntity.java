@@ -1,6 +1,6 @@
 package com.github.odyn666.apptrainer.entity;
 
-import com.github.odyn666.appstudnet.entity.enums.ExamType;
+import com.github.odyn666.apptrainer.entity.enums.ExamType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
