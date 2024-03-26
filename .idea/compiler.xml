@@ -7,21 +7,24 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="appTrainer" />
-        <module name="appStudnet" />
         <module name="appTextMessages" />
+        <module name="appSchool" />
         <module name="eurekaServer" />
         <module name="appAuth" />
+        <module name="zappSpareMicroServiceWaitingForItMoment" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="smsTest" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="appAuth" options="-parameters" />
-      <module name="appStudnet" options="-parameters" />
+      <module name="appSchool" options="-parameters" />
       <module name="appTextMessages" options="-parameters" />
-      <module name="appTrainer" options="-parameters" />
       <module name="eurekaServer" options="-parameters" />
+      <module name="zappSpareMicroServiceWaitingForItMoment" options="-parameters" />
     </option>
   </component>
 </project>
