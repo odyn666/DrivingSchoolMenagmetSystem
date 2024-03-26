@@ -1,9 +1,9 @@
 package com.github.odyn666.apptrainer.service;
 
-import com.github.odyn666.appstudnet.dto.TrainerEntityDto;
-import com.github.odyn666.appstudnet.entity.TrainerEntity;
-import com.github.odyn666.appstudnet.mapper.TrainerMapper;
-import com.github.odyn666.appstudnet.repository.TrainerEntityRepository;
+import com.github.odyn666.apptrainer.dto.TrainerEntityDto;
+import com.github.odyn666.apptrainer.entity.TrainerEntity;
+import com.github.odyn666.apptrainer.mapper.TrainerMapper;
+import com.github.odyn666.apptrainer.repository.TrainerEntityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

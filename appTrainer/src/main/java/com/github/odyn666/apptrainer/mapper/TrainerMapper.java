@@ -1,7 +1,7 @@
 package com.github.odyn666.apptrainer.mapper;
 
-import com.github.odyn666.appstudnet.dto.TrainerEntityDto;
-import com.github.odyn666.appstudnet.entity.TrainerEntity;
+import com.github.odyn666.apptrainer.dto.TrainerEntityDto;
+import com.github.odyn666.apptrainer.entity.TrainerEntity;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,7 +1,7 @@
 package com.github.odyn666.apptrainer.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.github.odyn666.appstudnet.entity.enums.Status;
+import com.github.odyn666.apptrainer.entity.enums.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
