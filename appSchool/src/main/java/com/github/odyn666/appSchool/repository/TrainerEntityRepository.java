@@ -24,7 +24,7 @@ public interface TrainerEntityRepository extends JpaRepository<TrainerEntity, Lo
 
     Optional<TrainerEntity> findTrainerEntityByIdentifier(String identifier);
 
-    @Query("SELECT t FROM TrainerEntity t Left JOIN FETCH t.lessons where t.id = :id")
+    @Query("SELECT t FROM TrainerEntity t LEFT JOIN t.lessons WHERE t.id = :trainerID")
     Optional<List<LessonEntity>> findAllLessonsForTrainer(Long trainerID);
 
 
