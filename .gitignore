@@ -14,3 +14,4 @@
 /appStudnet/target/**
 /appAuth/target/**
 /zappSpareMicroServiceWaitingForItMoment/target/**
+/eurekaServer/target/**
