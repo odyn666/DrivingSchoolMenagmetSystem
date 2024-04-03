@@ -19,7 +19,7 @@ public interface TrainerEntityRepository extends JpaRepository<TrainerEntity, Lo
     Boolean existsTrainerEntityByEmail(String email);
     Optional<TrainerEntity> findTrainerEntityById(Long id);
 
-    Optional<TrainerEntity> findTrainerEntityByStatus(Status status);
+    List<TrainerEntity> findAllByStatus(Status status);
 
     @Query("SELECT t FROM TrainerEntity t order by t.studentsPassRate desc NULLS LAST")
     List<TrainerEntity> findTrainerEntityByStudentsPassRate();

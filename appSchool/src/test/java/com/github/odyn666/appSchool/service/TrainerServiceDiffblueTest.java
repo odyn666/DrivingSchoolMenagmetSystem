@@ -182,7 +182,7 @@ class TrainerServiceDiffblueTest {
 
         // Act
         TrainerEntity actualSaveTrainerResult = trainerService
-                .saveTrainer(new TrainerRegistrationDto("Jane", "Doe", "42", "6625550144", "jane.doe@example.org"));
+                .saveTrainer(new TrainerRegistrationDto("Jane", "Doe", "42", "6625550144", "jane.doe@example.org","",""));
 
         // Assert
         verify(trainerEntityRepository).save(isA(TrainerEntity.class));
@@ -346,20 +346,20 @@ class TrainerServiceDiffblueTest {
         carId2.setTrainer(trainer);
 
         TrainerEntity trainerEntity = getTrainerEntity(carId2);
-        Optional<TrainerEntity> ofResult = Optional.of(trainerEntity);
-        when(trainerEntityRepository.findTrainerEntityByStatus(Mockito.<Status>any())).thenReturn(ofResult);
+        List<TrainerEntity> ofResult = List.of(trainerEntity);
+        when(trainerEntityRepository.findAllByStatus(Mockito.<Status>any())).thenReturn(ofResult);
         TrainerEntityDto trainerEntityDto = new TrainerEntityDto("Jane", "Doe", "42", "6625550144", "jane.doe@example.org",
                 1, new ArrayList<>());
 
         when(trainerMapper.toDto(Mockito.<TrainerEntity>any())).thenReturn(trainerEntityDto);
 
         // Act
-        TrainerEntityDto actualTrainerByStatus = trainerService.getTrainerByStatus(Status.ACTIVE);
+        List<TrainerEntityDto> actualTrainerByStatus = trainerService.getTrainerByStatus(Status.ACTIVE);
 
         // Assert
         verify(trainerMapper).toDto(isA(TrainerEntity.class));
-        verify(trainerEntityRepository).findTrainerEntityByStatus(eq(Status.ACTIVE));
-        assertSame(trainerEntityDto, actualTrainerByStatus);
+        verify(trainerEntityRepository).findAllByStatus(eq(Status.ACTIVE));
+        assertSame(trainerEntityDto, actualTrainerByStatus.getFirst());
     }
 
     /**
@@ -391,14 +391,14 @@ class TrainerServiceDiffblueTest {
         carId2.setTrainer(trainer);
 
         TrainerEntity trainerEntity = getTrainerEntity(carId2);
-        Optional<TrainerEntity> ofResult = Optional.of(trainerEntity);
-        when(trainerEntityRepository.findTrainerEntityByStatus(Mockito.<Status>any())).thenReturn(ofResult);
+        List<TrainerEntity> ofResult = List.of(trainerEntity);
+        when(trainerEntityRepository.findAllByStatus(Mockito.<Status>any())).thenReturn(ofResult);
         when(trainerMapper.toDto(Mockito.<TrainerEntity>any())).thenThrow(new TrainerNotFoundException());
 
         // Act and Assert
         assertThrows(TrainerNotFoundException.class, () -> trainerService.getTrainerByStatus(Status.ACTIVE));
         verify(trainerMapper).toDto(isA(TrainerEntity.class));
-        verify(trainerEntityRepository).findTrainerEntityByStatus(eq(Status.ACTIVE));
+        verify(trainerEntityRepository).findAllByStatus(eq(Status.ACTIVE));
     }
 
     /**

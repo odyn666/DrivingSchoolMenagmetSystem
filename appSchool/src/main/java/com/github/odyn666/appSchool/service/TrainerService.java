@@ -52,12 +52,14 @@ public class TrainerService {
     }
 
     public TrainerEntity getTrainerByID(Long id) {
-        return trainerRepository.findTrainerEntityById(id).orElse(null);
+        return trainerRepository.findTrainerEntityById(id).orElseThrow(TrainerNotFoundException::new);
     }
 
-    public TrainerEntityDto getTrainerByStatus(Status status) {
-        TrainerEntity trainerEntity = trainerRepository.findTrainerEntityByStatus(status).orElseThrow(TrainerNotFoundException::new);
-        return trainerMapper.toDto(trainerEntity);
+    public List<TrainerEntityDto> getTrainerByStatus(Status status) {
+        List<TrainerEntity> trainerEntities = trainerRepository.findAllByStatus(status);
+        return trainerEntities.stream()
+                .map(trainerMapper::toDto)
+                .toList();
     }
 
     public List<TrainerEntityDto> getTrainersByStudentsPassRate() {

@@ -30,7 +30,7 @@ public class TrainerController {
     }
 
     @GetMapping("/status")
-    public ResponseEntity<TrainerEntityDto> getTrainerByStatus(@RequestParam Status status) {
+    public ResponseEntity<List<TrainerEntityDto>> getTrainerByStatus(@RequestParam Status status) {
         return ResponseEntity.ok(trainerService.getTrainerByStatus(status));
     }
 

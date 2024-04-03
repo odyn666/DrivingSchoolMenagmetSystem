@@ -28,7 +28,7 @@ public final class TrainerEntityDto implements Serializable {
     private final String identifier;
     private final String phoneNumber;
     private final String email;
-    private final Integer studentsPassRate;
+    private final Float studentsPassRate;
     private final List<TrainerOpinions> trainerOpinions;
 
 

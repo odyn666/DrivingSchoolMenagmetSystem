@@ -16,9 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/apistudent")
+@RequestMapping("/api/student")
 @RequiredArgsConstructor
-@Slf4j
 public class StudentController {
 
     private final TrainerService trainerService;
@@ -29,7 +28,7 @@ public class StudentController {
         return ResponseEntity.ok(trainerService.getTrainers());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<StudentEntityDto> getStudentById(@PathVariable Long id) {
         return ResponseEntity.ok(studentService.findStudentById(id));
     }
@@ -39,7 +38,7 @@ public class StudentController {
         return ResponseEntity.ok(studentService.findStudentByEmail(email));
     }
 
-    @PostMapping("/register")
+    @PostMapping("/add")
     public ResponseEntity<StudentEntity> registerStudent(@RequestBody StudentRegisterDto dto) {
         return ResponseEntity.ok(studentService.registerStudent(dto));
     }
