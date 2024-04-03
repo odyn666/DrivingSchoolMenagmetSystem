@@ -1,6 +1,7 @@
 package com.github.odyn666.appSchool.service;
 
 import com.github.odyn666.appSchool.dto.TrainerEntityDto;
+import com.github.odyn666.appSchool.dto.auth.TrainerRegistrationDto;
 import com.github.odyn666.appSchool.entity.LessonEntity;
 import com.github.odyn666.appSchool.entity.TrainerEntity;
 import com.github.odyn666.appSchool.entity.enums.Status;
@@ -25,8 +26,21 @@ public class TrainerService {
 
 
     //*CREATE
+    @Transactional
     public TrainerEntity saveTrainer(TrainerEntity dto) {
         return trainerRepository.save(dto);
+    }
+
+    @Transactional
+    public TrainerEntity saveTrainer(TrainerRegistrationDto dto) {
+        TrainerEntity trainer = new TrainerEntity();
+        trainer.setFirstName(dto.getFirstName());
+        trainer.setLastName(dto.getLastName());
+        trainer.setIdentifier(dto.getIdentifier());
+        trainer.setPhoneNumber(dto.getPhoneNumber());
+        trainer.setEmail(dto.getEmail());
+
+        return trainerRepository.save(trainer);
     }
 
     //*READ
@@ -75,6 +89,10 @@ public class TrainerService {
             ReflectionUtils.setField(field, trainer, value);
         });
         return trainer;
+    }
+
+    public Boolean trainerEmailExists(String email) {
+        return trainerRepository.existsTrainerEntityByEmail(email);
     }
 
     //*UPDATE
