@@ -48,8 +48,8 @@ public class StudentController {
         return ResponseEntity.ok(studentService.findLessonById(id));
     }
 
-    @GetMapping("/lessons/my")
-    public ResponseEntity<List<LessonEntity>> getLessonsByStudentId(@PathParam("studentId") Long id) {
+    @GetMapping("/lessons/byStudent/{id}")
+    public ResponseEntity<List<LessonEntity>> getLessonsByStudentId(@PathVariable Long id) {
         return ResponseEntity.ok(studentService.getLessonsByStudentId(id));
     }
 

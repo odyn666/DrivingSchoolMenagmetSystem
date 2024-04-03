@@ -1,6 +1,7 @@
 package com.github.odyn666.appSchool.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.github.odyn666.appSchool.entity.enums.LessonStatus;
 import com.github.odyn666.appSchool.entity.enums.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -40,5 +41,6 @@ public class LessonEntity {
     private String endingHour;
 
     @Column(name = "STATUS")
-    private Status status;
+    @Enumerated(EnumType.STRING)
+    private LessonStatus status;
 }
