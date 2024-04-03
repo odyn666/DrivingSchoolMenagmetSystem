@@ -45,6 +45,7 @@ public class TrainerEntity {
     private Integer studentsPassRate;
 
     @OneToOne(mappedBy = "trainer")
+    @JsonManagedReference
     @JoinColumn(name = "car_id", referencedColumnName = "id")
     private CarEntity carId;
 

@@ -1,18 +1,23 @@
 package com.github.odyn666.appSchool.service;
 
+import com.github.odyn666.appSchool.dto.LessonRequestDto;
 import com.github.odyn666.appSchool.dto.StudentEntityDto;
 import com.github.odyn666.appSchool.dto.StudentRegisterDto;
 import com.github.odyn666.appSchool.entity.LessonEntity;
 import com.github.odyn666.appSchool.entity.StudentEntity;
+import com.github.odyn666.appSchool.entity.enums.LessonStatus;
 import com.github.odyn666.appSchool.exception.exceptions.LessonNotFoundException;
 import com.github.odyn666.appSchool.exception.exceptions.StudentNotFoundException;
+import com.github.odyn666.appSchool.exception.exceptions.TrainerNotFoundException;
 import com.github.odyn666.appSchool.mapper.StudentMapper;
 import com.github.odyn666.appSchool.repository.LessonEntityRepository;
 import com.github.odyn666.appSchool.repository.StudentEntityRepository;
+import com.github.odyn666.appSchool.repository.TrainerEntityRepository;
 import com.github.odyn666.appSchool.utils.PasswordHasher;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.List;
 
 @Service
@@ -23,6 +28,7 @@ public class StudentService {
     private final StudentMapper studentMapper;
     private final PasswordHasher passwordHasher;
     private final LessonEntityRepository lessonRepository;
+    private final TrainerEntityRepository trainerEntityRepository;
 
     public StudentEntityDto findStudentById(Long id) {
         StudentEntity entity = studentRepository.findById(id).orElseThrow(StudentNotFoundException::new);
@@ -55,7 +61,15 @@ public class StudentService {
         return entity;
     }
 
-    public LessonEntity requestLesson(LessonEntity lesson) {
+    public LessonEntity requestLesson(LessonRequestDto lessonDto) {
+        LessonEntity lesson = new LessonEntity();
+        lesson.setDate(Date.valueOf(lessonDto.getDate()));
+        lesson.setStatus(LessonStatus.PENDING);
+        lesson.setStartingHour(lessonDto.getStartingHour());
+        lesson.setEndingHour(lessonDto.getEndingHour());
+        lesson.setStudent(studentRepository.findById(lessonDto.getStudentId()).orElseThrow(StudentNotFoundException::new));
+        lesson.setTrainer(trainerEntityRepository.findById(lessonDto.getTrainerId()).orElseThrow(TrainerNotFoundException::new));
+        System.out.println(lesson.getTrainer());
         return lessonRepository.save(lesson);
     }
 

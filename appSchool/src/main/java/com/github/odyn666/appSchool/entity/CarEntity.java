@@ -1,5 +1,6 @@
 package com.github.odyn666.appSchool.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -36,6 +37,7 @@ public class CarEntity {
     private Integer lastMaintenanceMileage;
 
     @OneToOne
+    @JsonBackReference
     @JoinColumn(name = "TRAINER_ID", referencedColumnName = "id")
     private TrainerEntity trainer;
 }

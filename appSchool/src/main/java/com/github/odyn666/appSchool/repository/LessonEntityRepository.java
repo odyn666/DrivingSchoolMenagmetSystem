@@ -10,6 +10,5 @@ import java.util.List;
 @Repository
 public interface LessonEntityRepository extends JpaRepository<LessonEntity, Long> {
 
-//    @Query(value = "SELECT * FROM lessons WHERE student_id = ?1", nativeQuery = true)
     List<LessonEntity> findAllByStudentId(Long id);
 }
