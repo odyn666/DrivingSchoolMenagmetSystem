@@ -23,6 +23,7 @@ public class StudentRegisterDto {
 
     @NotEmpty
     private String password;
+    private String matchingPassword;
 
     @NotEmpty
     private String phoneNumber;

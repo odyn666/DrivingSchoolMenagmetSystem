@@ -9,6 +9,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.github.odyn666.appSchool.dto.TrainerEntityDto;
+import com.github.odyn666.appSchool.dto.auth.TrainerRegistrationDto;
 import com.github.odyn666.appSchool.entity.CarEntity;
 import com.github.odyn666.appSchool.entity.LessonEntity;
 import com.github.odyn666.appSchool.entity.TrainerEntity;
@@ -111,6 +112,84 @@ class TrainerServiceDiffblueTest {
     }
 
     /**
+     * Method under test: {@link TrainerService#saveTrainer(TrainerRegistrationDto)}
+     */
+    @Test
+    void testSaveTrainer2() {
+        // Arrange
+        TrainerEntity trainer = new TrainerEntity();
+        trainer.setCarId(new CarEntity());
+        trainer.setEmail("jane.doe@example.org");
+        trainer.setFirstName("Jane");
+        trainer.setIdentifier("42");
+        trainer.setLastName("Doe");
+        trainer.setLessons(new ArrayList<>());
+        trainer.setPassword("iloveyou");
+        trainer.setPhoneNumber("6625550144");
+        trainer.setStatus(Status.ACTIVE);
+        trainer.setStudentsPassRate(1);
+        trainer.setTrainTrainerSchedules(new ArrayList<>());
+        trainer.setTrainerOpinions(new ArrayList<>());
+
+        CarEntity carId = new CarEntity();
+        carId.setBrand("Brand");
+        carId.setId(1L);
+        carId.setLastMaintenanceMileage(1);
+        carId.setMileage(1);
+        carId.setModel("Model");
+        carId.setPlates("Plates");
+        carId.setProdYear(1);
+        carId.setTrainer(trainer);
+
+        TrainerEntity trainer2 = new TrainerEntity();
+        trainer2.setCarId(carId);
+        trainer2.setEmail("jane.doe@example.org");
+        trainer2.setFirstName("Jane");
+        trainer2.setIdentifier("42");
+        trainer2.setLastName("Doe");
+        trainer2.setLessons(new ArrayList<>());
+        trainer2.setPassword("iloveyou");
+        trainer2.setPhoneNumber("6625550144");
+        trainer2.setStatus(Status.ACTIVE);
+        trainer2.setStudentsPassRate(1);
+        trainer2.setTrainTrainerSchedules(new ArrayList<>());
+        trainer2.setTrainerOpinions(new ArrayList<>());
+
+        CarEntity carId2 = new CarEntity();
+        carId2.setBrand("Brand");
+        carId2.setId(1L);
+        carId2.setLastMaintenanceMileage(1);
+        carId2.setMileage(1);
+        carId2.setModel("Model");
+        carId2.setPlates("Plates");
+        carId2.setProdYear(1);
+        carId2.setTrainer(trainer2);
+
+        TrainerEntity trainerEntity = new TrainerEntity();
+        trainerEntity.setCarId(carId2);
+        trainerEntity.setEmail("jane.doe@example.org");
+        trainerEntity.setFirstName("Jane");
+        trainerEntity.setIdentifier("42");
+        trainerEntity.setLastName("Doe");
+        trainerEntity.setLessons(new ArrayList<>());
+        trainerEntity.setPassword("iloveyou");
+        trainerEntity.setPhoneNumber("6625550144");
+        trainerEntity.setStatus(Status.ACTIVE);
+        trainerEntity.setStudentsPassRate(1);
+        trainerEntity.setTrainTrainerSchedules(new ArrayList<>());
+        trainerEntity.setTrainerOpinions(new ArrayList<>());
+        when(trainerEntityRepository.save(Mockito.<TrainerEntity>any())).thenReturn(trainerEntity);
+
+        // Act
+        TrainerEntity actualSaveTrainerResult = trainerService
+                .saveTrainer(new TrainerRegistrationDto("Jane", "Doe", "42", "6625550144", "jane.doe@example.org"));
+
+        // Assert
+        verify(trainerEntityRepository).save(isA(TrainerEntity.class));
+        assertSame(trainerEntity, actualSaveTrainerResult);
+    }
+
+    /**
      * Method under test: {@link TrainerService#getTrainers()}
      */
     @Test
@@ -172,7 +251,7 @@ class TrainerServiceDiffblueTest {
         trainer.setCarId(carId);
         trainer.setEmail("jane.doe@example.org");
         trainer.setFirstName("Jane");
-        trainer.setId(1L);
+        //        trainer.setId(1L);
         trainer.setIdentifier("42");
         trainer.setLastName("Doe");
         trainer.setLessons(new ArrayList<>());

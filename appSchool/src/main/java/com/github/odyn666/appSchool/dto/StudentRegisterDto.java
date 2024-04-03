@@ -13,5 +13,6 @@ public class StudentRegisterDto {
     private String pkkNumber;
     private String email;
     private String password;
+    private String matchingPassword;
     private String phoneNumber;
 }
