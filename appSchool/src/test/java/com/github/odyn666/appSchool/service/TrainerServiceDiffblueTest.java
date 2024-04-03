@@ -349,7 +349,7 @@ class TrainerServiceDiffblueTest {
         List<TrainerEntity> ofResult = List.of(trainerEntity);
         when(trainerEntityRepository.findAllByStatus(Mockito.<Status>any())).thenReturn(ofResult);
         TrainerEntityDto trainerEntityDto = new TrainerEntityDto("Jane", "Doe", "42", "6625550144", "jane.doe@example.org",
-                1, new ArrayList<>());
+                1F, new ArrayList<>());
 
         when(trainerMapper.toDto(Mockito.<TrainerEntity>any())).thenReturn(trainerEntityDto);
 
@@ -490,7 +490,7 @@ class TrainerServiceDiffblueTest {
         Optional<TrainerEntity> ofResult = Optional.of(trainerEntity);
         when(trainerEntityRepository.findTrainerEntityByIdentifier(Mockito.<String>any())).thenReturn(ofResult);
         TrainerEntityDto trainerEntityDto = new TrainerEntityDto("Jane", "Doe", "42", "6625550144", "jane.doe@example.org",
-                1, new ArrayList<>());
+                1F, new ArrayList<>());
 
         when(trainerMapper.toDto(Mockito.<TrainerEntity>any())).thenReturn(trainerEntityDto);
 
