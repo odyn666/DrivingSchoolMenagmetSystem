@@ -6,8 +6,6 @@ import lombok.Setter;
 public enum Status {
 
     ACTIVE,
-    INACTIVE,
-    active,
-    inactive
+    INACTIVE
 
 }
