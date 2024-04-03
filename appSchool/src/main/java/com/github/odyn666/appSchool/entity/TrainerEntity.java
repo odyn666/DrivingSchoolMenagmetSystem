@@ -51,7 +51,7 @@ public class TrainerEntity {
 
     @OneToMany(mappedBy = "trainer", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
-    private List<SchedulesTrainerEntity> trainTrainerSchedules;
+    private List<SchedulesTrainerEntity> trainerSchedules;
 
     @OneToMany(mappedBy = "trainer", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference

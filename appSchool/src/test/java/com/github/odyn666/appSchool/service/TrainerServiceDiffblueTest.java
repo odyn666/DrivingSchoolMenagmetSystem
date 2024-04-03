@@ -128,7 +128,7 @@ class TrainerServiceDiffblueTest {
         trainer.setPhoneNumber("6625550144");
         trainer.setStatus(Status.ACTIVE);
         trainer.setStudentsPassRate(1);
-        trainer.setTrainTrainerSchedules(new ArrayList<>());
+        trainer.setTrainerSchedules(new ArrayList<>());
         trainer.setTrainerOpinions(new ArrayList<>());
 
         CarEntity carId = new CarEntity();
@@ -152,7 +152,7 @@ class TrainerServiceDiffblueTest {
         trainer2.setPhoneNumber("6625550144");
         trainer2.setStatus(Status.ACTIVE);
         trainer2.setStudentsPassRate(1);
-        trainer2.setTrainTrainerSchedules(new ArrayList<>());
+        trainer2.setTrainerSchedules(new ArrayList<>());
         trainer2.setTrainerOpinions(new ArrayList<>());
 
         CarEntity carId2 = new CarEntity();
@@ -176,7 +176,7 @@ class TrainerServiceDiffblueTest {
         trainerEntity.setPhoneNumber("6625550144");
         trainerEntity.setStatus(Status.ACTIVE);
         trainerEntity.setStudentsPassRate(1);
-        trainerEntity.setTrainTrainerSchedules(new ArrayList<>());
+        trainerEntity.setTrainerSchedules(new ArrayList<>());
         trainerEntity.setTrainerOpinions(new ArrayList<>());
         when(trainerEntityRepository.save(Mockito.<TrainerEntity>any())).thenReturn(trainerEntity);
 
@@ -259,7 +259,7 @@ class TrainerServiceDiffblueTest {
         trainer.setPhoneNumber("6625550144");
         trainer.setStatus(Status.ACTIVE);
         trainer.setStudentsPassRate(1);
-        trainer.setTrainTrainerSchedules(new ArrayList<>());
+        trainer.setTrainerSchedules(new ArrayList<>());
         trainer.setTrainerOpinions(new ArrayList<>());
         return trainer;
     }
