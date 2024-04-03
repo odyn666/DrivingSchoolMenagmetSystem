@@ -1,5 +1,6 @@
 package com.github.odyn666.appSchool.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -21,6 +23,7 @@ public class SchedulesStudentsEntity {
     private Long id;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "STUDENT_ID", referencedColumnName = "ID")
     private StudentEntity student;
 
@@ -28,9 +31,9 @@ public class SchedulesStudentsEntity {
     private Date date;
 
     @Column(name = "STARTING_HOUR")
-    private Timestamp startingHour;
+    private String startingHour;
 
     @Column(name = "ENDING_HOUR")
-    private Timestamp endingHour;
+    private String endingHour;
 
 }

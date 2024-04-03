@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS trainers_opinions (
+CREATE TABLE IF NOT EXISTS trainer_opinions (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
     student_id INTEGER,
     trainer_id INTEGER,

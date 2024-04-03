@@ -1,5 +1,6 @@
 package com.github.odyn666.appSchool.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.github.odyn666.appSchool.entity.enums.ExamType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -23,6 +24,7 @@ public class ExamEntity {
     private ExamType examType;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "STUDENT_ID", nullable = false, referencedColumnName = "ID")
     private StudentEntity student;
 
@@ -34,6 +36,4 @@ public class ExamEntity {
 
     @Column(name = "DESCRIPTION", length = 255)
     private String description;
-
-
 }

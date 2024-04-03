@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS cars (
     model VARCHAR(128) NOT NULL,
     prod_year INTEGER NOT NULL,
     mileage INTEGER NOT NULL,
-    last_maintenance_mileage INTEGER NOT NULL
+    last_maintenance_mileage INTEGER NOT NULL,
+    trainer_id INTEGER
 --     dorzucić tankowanie i usterki
 )

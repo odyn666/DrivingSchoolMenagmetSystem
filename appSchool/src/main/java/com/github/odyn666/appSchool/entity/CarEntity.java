@@ -29,12 +29,13 @@ public class CarEntity {
     @Column(name = "PROD_YEAR")
     private Integer prodYear;
 
-    @Column(name = "MILAGE")
+    @Column(name = "MILEAGE")
     private Integer mileage;
 
     @Column(name = "LAST_MAINTENANCE_MILEAGE")
     private Integer lastMaintenanceMileage;
 
     @OneToOne
+    @JoinColumn(name = "TRAINER_ID", referencedColumnName = "id")
     private TrainerEntity trainer;
 }

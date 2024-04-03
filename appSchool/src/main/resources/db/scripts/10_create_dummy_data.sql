@@ -10,8 +10,8 @@ INSERT INTO students(first_name,
                      last_login,
                      exams_failed,
                      lessons_attended,
-                     lessons_ommited,
-                     exam_passed)
+                     lessons_omitted,
+                     is_final_exam_passed)
 VALUES ('Andrzej',
         'Kowalski',
         '124871248907',
@@ -39,8 +39,8 @@ INSERT INTO students(first_name,
                      last_login,
                      exams_failed,
                      lessons_attended,
-                     lessons_ommited,
-                     exam_passed)
+                     lessons_omitted,
+                     is_final_exam_passed)
 VALUES ('Marcin',
         'Łopian',
         '4821941986412',
@@ -105,13 +105,15 @@ INSERT INTO cars(plates,
                  model,
                  prod_year,
                  mileage,
-                 last_maintenance_mileage)
+                 last_maintenance_mileage,
+                 trainer_id)
 values ('XD12345',
         'Fiat',
         'Punto',
         '2024',
         100000,
-        95000);
+        95000,
+        1);
 
 INSERT INTO trainers(first_name,
                      last_name,
@@ -167,9 +169,9 @@ VALUES (1,
         '13:00',
         'ENDED');
 
-INSERT INTO exams(type,
+INSERT INTO exams(exam_type,
                   student_id,
-                  passed,
+                  is_passed,
                   score,
                   description)
 VALUES ('THEORETICAL',
@@ -178,14 +180,14 @@ VALUES ('THEORETICAL',
         0,
         'Ziomek jest nowy to nawet jednego punkta nie wystrzelał');
 
-INSERT INTO trainers_opinions(student_id,
+INSERT INTO trainer_opinions(student_id,
                               trainer_id,
                               opinion)
 VALUES (1,
         1,
         'I like this trainer');
 
-INSERT INTO trainers_opinions(student_id,
+INSERT INTO trainer_opinions(student_id,
                               trainer_id,
                               opinion)
 VALUES (2,

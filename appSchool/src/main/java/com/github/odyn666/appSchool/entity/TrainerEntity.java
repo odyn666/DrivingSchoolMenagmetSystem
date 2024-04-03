@@ -40,6 +40,7 @@ public class TrainerEntity {
     private String password;
 
     @Column(name = "STATUS")
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     @Column(name = "STUDENTS_PASS_RATE")
