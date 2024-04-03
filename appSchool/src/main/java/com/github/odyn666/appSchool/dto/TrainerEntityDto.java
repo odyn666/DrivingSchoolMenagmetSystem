@@ -19,7 +19,6 @@ import java.util.Objects;
 @Getter
 @Setter
 @AllArgsConstructor
-
 @EqualsAndHashCode
 public final class TrainerEntityDto implements Serializable {
     @Serial

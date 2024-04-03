@@ -22,13 +22,13 @@ public class TrainerMapper {
 
     public TrainerEntity toEntity(TrainerEntityDto dto) {
         TrainerEntity entity = new TrainerEntity();
-        entity.setFirstName(dto.firstName());
-        entity.setLastName(dto.lastName());
-        entity.setIdentifier(dto.identifier());
-        entity.setPhoneNumber(dto.phoneNumber());
-        entity.setEmail(dto.email());
-        entity.setStudentsPassRate(dto.studentsPassRate());
-        entity.setTrainerOpinions(dto.trainerOpinions());
+        entity.setFirstName(dto.getFirstName());
+        entity.setLastName(dto.getLastName());
+        entity.setIdentifier(dto.getIdentifier());
+        entity.setPhoneNumber(dto.getPhoneNumber());
+        entity.setEmail(dto.getEmail());
+        entity.setStudentsPassRate(dto.getStudentsPassRate());
+        entity.setTrainerOpinions(dto.getTrainerOpinions());
         return entity;
     }
 }
