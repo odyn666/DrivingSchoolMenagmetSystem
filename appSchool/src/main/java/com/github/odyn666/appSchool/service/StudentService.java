@@ -31,11 +31,11 @@ public class StudentService {
         return dto;
     }
 
-    public StudentEntityDto findStudentByEmail(String email) {
-        StudentEntity entity = studentRepository.findByEmail(email).orElseThrow(StudentNotFoundException::new);
-        StudentEntityDto dto = studentMapper.toDto(entity);
-
-        return dto;
+    public List<StudentEntityDto> findStudentByEmail(String email) {
+        List<StudentEntity> entities = studentRepository.findAllByEmail(email);
+        return entities.stream()
+                .map(studentMapper::toDto)
+                .toList();
     }
 
     public StudentEntity registerStudent(StudentRegisterDto dto) {

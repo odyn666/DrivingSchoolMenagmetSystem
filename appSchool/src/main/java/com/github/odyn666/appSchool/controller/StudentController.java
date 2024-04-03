@@ -35,7 +35,7 @@ public class StudentController {
     }
 
     @GetMapping("/email/")
-    public ResponseEntity<StudentEntityDto> getStudentByEmail(@PathParam("email") String email) {
+    public ResponseEntity<List<StudentEntityDto>> getStudentByEmail(@PathParam("email") String email) {
         return ResponseEntity.ok(studentService.findStudentByEmail(email));
     }
 
