@@ -24,7 +24,8 @@ public class AuthController {
         {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
-        trainerService.saveTrainer(dto);
+        TrainerEntity trainerEntity = trainerService.saveTrainer(dto);
+        return ResponseEntity.ok(trainerEntity);
     }
 
 }
