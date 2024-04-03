@@ -27,8 +27,8 @@ public class TrainerService {
 
     //*CREATE
     @Transactional
-    public TrainerEntity saveTrainer(TrainerEntity dto) {
-        return trainerRepository.save(dto);
+    public TrainerEntity saveTrainer(TrainerEntity entity) {
+        return trainerRepository.save(entity);
     }
 
     @Transactional
