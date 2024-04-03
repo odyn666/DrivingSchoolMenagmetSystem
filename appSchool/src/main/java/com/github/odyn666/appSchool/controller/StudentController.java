@@ -9,6 +9,7 @@ import com.github.odyn666.appSchool.service.StudentService;
 import com.github.odyn666.appSchool.service.TrainerService;
 import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/apistudent")
 @RequiredArgsConstructor
+@Slf4j
 public class StudentController {
 
     private final TrainerService trainerService;

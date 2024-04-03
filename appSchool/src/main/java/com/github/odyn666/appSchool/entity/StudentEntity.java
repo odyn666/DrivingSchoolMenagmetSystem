@@ -1,5 +1,6 @@
 package com.github.odyn666.appSchool.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.github.odyn666.appSchool.entity.enums.Status;
 import jakarta.persistence.*;
 import jakarta.ws.rs.DefaultValue;
@@ -38,6 +39,7 @@ public class StudentEntity {
     private String phoneNumber;
 
     @Column(name = "STATUS", nullable = false)
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     @Column(name = "HOURS_LEFT", nullable = false)
@@ -46,25 +48,27 @@ public class StudentEntity {
     @Column(name = "LAST_LOGIN", nullable = false)
     private Date lastLogin;
 
-    @Column(name = "HOURSDRIVEN", nullable = false)
+    @Column(name = "HOURS_DRIVEN", nullable = false)
     @DefaultValue("0")
     private Integer hoursDriven;
 
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<ExamEntity> exams;
 
-    @Column(name = "lessons_attended")
+    @Column(name = "LESSONS_ATTENDED")
     @DefaultValue("0")
     private Short lessonsAttended;
 
-    @Column(name = "lessons_omitted")
+    @Column(name = "LESSONS_OMITTED")
     @DefaultValue("0")
     private Short lessonsOmitted;
 
-    @Column(name = "is_finial_exam_passed", nullable = false)
+    @Column(name = "IS_FINAL_EXAM_PASSED", nullable = false)
     private Boolean isFinialExamPassed;
 
     @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<SchedulesStudentsEntity> schedulesID;
 }
 
