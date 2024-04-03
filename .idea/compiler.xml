@@ -11,13 +11,13 @@
         <module name="appSchool" />
         <module name="eurekaServer" />
         <module name="appAuth" />
-        <module name="zappSpareMicroServiceWaitingForItMoment" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="appStudnet" target="21" />
       <module name="appTrainer" target="21" />
       <module name="smsTest" target="17" />
+      <module name="zappSpareMicroServiceWaitingForItMoment" target="21" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

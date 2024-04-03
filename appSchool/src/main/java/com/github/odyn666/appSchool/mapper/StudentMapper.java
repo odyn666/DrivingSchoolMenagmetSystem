@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class StudentMapper {
 
     public StudentEntityDto toDto(StudentEntity student) {
-        StudentEntityDto dto = new StudentEntityDto(
+        return new StudentEntityDto(
                 student.getFirstName(),
                 student.getLastName(),
                 student.getEmail(),
@@ -16,6 +16,5 @@ public class StudentMapper {
                 student.getHoursLeft(),
                 student.getHoursDriven()
         );
-        return dto;
     }
 }

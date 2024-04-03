@@ -15,6 +15,8 @@ public interface TrainerEntityRepository extends JpaRepository<TrainerEntity, Lo
     @Query("SELECT t FROM TrainerEntity t WHERE t.firstName = :name or t.lastName=:name")
     List<TrainerEntity> findByName(String name);
 
+    Optional<TrainerEntity> findTrainerEntityByEmail(String email);
+    Boolean existsTrainerEntityByEmail(String email);
     Optional<TrainerEntity> findTrainerEntityById(Long id);
 
     Optional<TrainerEntity> findTrainerEntityByStatus(Status status);
@@ -26,6 +28,7 @@ public interface TrainerEntityRepository extends JpaRepository<TrainerEntity, Lo
 
     @Query("SELECT t FROM TrainerEntity t LEFT JOIN t.lessons WHERE t.id = :trainerID")
     Optional<List<LessonEntity>> findAllLessonsForTrainer(Long trainerID);
+
 
 
 
