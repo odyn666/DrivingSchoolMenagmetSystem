@@ -165,7 +165,7 @@ VALUES (1,
         '2024-03-15',
         '12:00',
         '13:00',
-        'ENDED');
+        'COMPLETED');
 
 INSERT INTO exams(exam_type,
                   student_id,
