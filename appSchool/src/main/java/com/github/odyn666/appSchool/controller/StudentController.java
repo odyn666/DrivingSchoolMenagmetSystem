@@ -59,7 +59,7 @@ public class StudentController {
 
 
     @PatchMapping("/lessons/update")
-    public ResponseEntity<LessonEntity> updateLesson(@RequestBody LessonEntity lesson) {
+    public ResponseEntity<LessonEntityDto> updateLesson(@RequestBody LessonUpdateDto lesson) {
         return ResponseEntity.ok(studentService.updateLesson(lesson));
     }
 }

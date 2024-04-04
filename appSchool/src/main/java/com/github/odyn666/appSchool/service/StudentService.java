@@ -1,9 +1,6 @@
 package com.github.odyn666.appSchool.service;
 
-import com.github.odyn666.appSchool.dto.LessonEntityDto;
-import com.github.odyn666.appSchool.dto.LessonRequestDto;
-import com.github.odyn666.appSchool.dto.StudentEntityDto;
-import com.github.odyn666.appSchool.dto.StudentRegisterDto;
+import com.github.odyn666.appSchool.dto.*;
 import com.github.odyn666.appSchool.entity.LessonEntity;
 import com.github.odyn666.appSchool.entity.StudentEntity;
 import com.github.odyn666.appSchool.entity.enums.LessonStatus;
@@ -76,16 +73,20 @@ public class StudentService {
         return lessonMapper.toDto(lessonRepository.save(lesson));
     }
 
-    public LessonEntity updateLesson(LessonEntity lessonUpdated) {
+    public LessonEntityDto updateLesson(LessonUpdateDto lessonUpdated) {
         LessonEntity lessonToUpdate = lessonRepository.findById(lessonUpdated.getId()).orElseThrow(LessonNotFoundException::new);
-        lessonToUpdate.setDate(lessonUpdated.getDate());
+        lessonToUpdate.setDate(Date.valueOf(lessonUpdated.getDate()));
         lessonToUpdate.setStatus(lessonUpdated.getStatus());
         lessonToUpdate.setStartingHour(lessonUpdated.getStartingHour());
         lessonToUpdate.setEndingHour(lessonUpdated.getEndingHour());
+        lessonToUpdate.setTrainer(trainerEntityRepository.findById(lessonUpdated.getTrainerId()).orElseThrow(TrainerNotFoundException::new));
+        lessonToUpdate.setStudent(studentRepository.findById(lessonUpdated.getStudentId()).orElseThrow(StudentNotFoundException::new));
+
+        System.out.println(lessonToUpdate.getStatus());
 
         lessonRepository.save(lessonToUpdate);
 
-        return lessonToUpdate;
+        return lessonMapper.toDto(lessonToUpdate);
     }
 
     public List<LessonEntity> getLessonsByStudentId(Long id) {
