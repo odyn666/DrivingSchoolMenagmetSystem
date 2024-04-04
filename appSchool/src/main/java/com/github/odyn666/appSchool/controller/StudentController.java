@@ -1,9 +1,6 @@
 package com.github.odyn666.appSchool.controller;
 
-import com.github.odyn666.appSchool.dto.LessonRequestDto;
-import com.github.odyn666.appSchool.dto.StudentEntityDto;
-import com.github.odyn666.appSchool.dto.StudentRegisterDto;
-import com.github.odyn666.appSchool.dto.TrainerEntityDto;
+import com.github.odyn666.appSchool.dto.*;
 import com.github.odyn666.appSchool.entity.LessonEntity;
 import com.github.odyn666.appSchool.entity.StudentEntity;
 import com.github.odyn666.appSchool.service.StudentService;
@@ -55,8 +52,8 @@ public class StudentController {
     }
 
     @PostMapping("/lessons/request")
-    public ResponseEntity<LessonEntity> requestLesson(@RequestBody LessonRequestDto lesson) {
-        LessonEntity entity = studentService.requestLesson(lesson);
+    public ResponseEntity<LessonEntityDto> requestLesson(@RequestBody LessonRequestDto lesson) {
+        LessonEntityDto entity = studentService.requestLesson(lesson);
         return ResponseEntity.ok(entity);
     }
 

@@ -64,6 +64,4 @@ public class TrainerController {
     public ResponseEntity<TrainerEntity>getTrainerByEmail(String email) {
         return ResponseEntity.ok(trainerService.getTrainerByEmail(email));
     }
-
-
 }

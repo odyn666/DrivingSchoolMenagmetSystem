@@ -70,7 +70,8 @@ public class StudentEntity {
     @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<SchedulesStudentsEntity> schedulesID;
+
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<LessonEntity> lessons;
 }
-
-
-

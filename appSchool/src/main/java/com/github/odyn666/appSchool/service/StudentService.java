@@ -1,5 +1,6 @@
 package com.github.odyn666.appSchool.service;
 
+import com.github.odyn666.appSchool.dto.LessonEntityDto;
 import com.github.odyn666.appSchool.dto.LessonRequestDto;
 import com.github.odyn666.appSchool.dto.StudentEntityDto;
 import com.github.odyn666.appSchool.dto.StudentRegisterDto;
@@ -9,6 +10,7 @@ import com.github.odyn666.appSchool.entity.enums.LessonStatus;
 import com.github.odyn666.appSchool.exception.exceptions.LessonNotFoundException;
 import com.github.odyn666.appSchool.exception.exceptions.StudentNotFoundException;
 import com.github.odyn666.appSchool.exception.exceptions.TrainerNotFoundException;
+import com.github.odyn666.appSchool.mapper.LessonMapper;
 import com.github.odyn666.appSchool.mapper.StudentMapper;
 import com.github.odyn666.appSchool.repository.LessonEntityRepository;
 import com.github.odyn666.appSchool.repository.StudentEntityRepository;
@@ -29,6 +31,7 @@ public class StudentService {
     private final PasswordHasher passwordHasher;
     private final LessonEntityRepository lessonRepository;
     private final TrainerEntityRepository trainerEntityRepository;
+    private final LessonMapper lessonMapper;
 
     public StudentEntityDto findStudentById(Long id) {
         StudentEntity entity = studentRepository.findById(id).orElseThrow(StudentNotFoundException::new);
@@ -61,7 +64,7 @@ public class StudentService {
         return entity;
     }
 
-    public LessonEntity requestLesson(LessonRequestDto lessonDto) {
+    public LessonEntityDto requestLesson(LessonRequestDto lessonDto) {
         LessonEntity lesson = new LessonEntity();
         lesson.setDate(Date.valueOf(lessonDto.getDate()));
         lesson.setStatus(LessonStatus.PENDING);
@@ -70,7 +73,7 @@ public class StudentService {
         lesson.setStudent(studentRepository.findById(lessonDto.getStudentId()).orElseThrow(StudentNotFoundException::new));
         lesson.setTrainer(trainerEntityRepository.findById(lessonDto.getTrainerId()).orElseThrow(TrainerNotFoundException::new));
 
-        return lessonRepository.save(lesson);
+        return lessonMapper.toDto(lessonRepository.save(lesson));
     }
 
     public LessonEntity updateLesson(LessonEntity lessonUpdated) {
