@@ -14,7 +14,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "SCHEDULES_TRAINER")
+@Table(name = "SCHEDULES_TRAINERS")
 public class SchedulesTrainerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

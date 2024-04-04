@@ -31,7 +31,7 @@ databaseChangeLog:
       author: postgres
       changes:
         - sqlFile:
-            path: scripts/04_create_table_cars.sql
+            path: scripts/04_create_table_trainers.sql
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
@@ -40,7 +40,7 @@ databaseChangeLog:
       author: postgres
       changes:
         - sqlFile:
-            path: scripts/05_create_table_trainers.sql
+            path: scripts/05_create_table_cars.sql
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true

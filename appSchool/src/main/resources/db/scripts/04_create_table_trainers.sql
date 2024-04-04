@@ -7,7 +7,5 @@ CREATE TABLE IF NOT EXISTS trainers (
     email VARCHAR(128),
     password VARCHAR(128),
     status VARCHAR(128) DEFAULT 'INACTIVE',
-    students_pass_rate INTEGER DEFAULT 0,
-    car_id INTEGER,
-    FOREIGN KEY(car_id) REFERENCES cars(id)
+    students_pass_rate INTEGER DEFAULT 0
 )

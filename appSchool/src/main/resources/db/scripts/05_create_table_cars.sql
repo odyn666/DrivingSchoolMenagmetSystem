@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS cars (
     prod_year INTEGER NOT NULL,
     mileage INTEGER NOT NULL,
     last_maintenance_mileage INTEGER NOT NULL,
-    trainer_id INTEGER
+    trainer_id INTEGER,
+    FOREIGN KEY (trainer_id) REFERENCES trainers(id)
 --     dorzucić tankowanie i usterki
 )

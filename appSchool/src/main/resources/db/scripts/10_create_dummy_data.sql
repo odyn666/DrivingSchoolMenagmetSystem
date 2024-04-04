@@ -100,6 +100,23 @@ VALUES (2,
         '12:00',
         '13:00');
 
+INSERT INTO trainers(first_name,
+                     last_name,
+                     identifier,
+                     phone_number,
+                     email,
+                     password,
+                     status,
+                     students_pass_rate)
+VALUES ('Bogdan',
+        'Boner',
+        'hgbrdoihgrsoihn3298sdvkj',
+        '+48 777 777 777',
+        'bogbon@gmail.com',
+        'marcinekteraz',
+        'ACTIVE',
+        '983');
+
 INSERT INTO cars(plates,
                  brand,
                  model,
@@ -114,25 +131,6 @@ values ('XD12345',
         100000,
         95000,
         1);
-
-INSERT INTO trainers(first_name,
-                     last_name,
-                     identifier,
-                     phone_number,
-                     email,
-                     password,
-                     status,
-                     students_pass_rate,
-                     car_id)
-VALUES ('Bogdan',
-        'Boner',
-        'hgbrdoihgrsoihn3298sdvkj',
-        '+48 777 777 777',
-        'bogbon@gmail.com',
-        'marcinekteraz',
-        'ACTIVE',
-        '983',
-        '1');
 
 INSERT INTO schedules_trainers(trainer_id,
                                date,

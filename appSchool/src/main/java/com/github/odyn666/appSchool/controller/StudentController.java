@@ -56,7 +56,8 @@ public class StudentController {
 
     @PostMapping("/lessons/request")
     public ResponseEntity<LessonEntity> requestLesson(@RequestBody LessonRequestDto lesson) {
-        return ResponseEntity.ok(studentService.requestLesson(lesson));
+        LessonEntity entity = studentService.requestLesson(lesson);
+        return ResponseEntity.ok(entity);
     }
 
 

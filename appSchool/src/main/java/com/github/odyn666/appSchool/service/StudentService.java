@@ -70,8 +70,6 @@ public class StudentService {
         lesson.setStudent(studentRepository.findById(lessonDto.getStudentId()).orElseThrow(StudentNotFoundException::new));
         lesson.setTrainer(trainerEntityRepository.findById(lessonDto.getTrainerId()).orElseThrow(TrainerNotFoundException::new));
 
-        System.out.println(lesson.getTrainer());
-
         return lessonRepository.save(lesson);
     }
 
