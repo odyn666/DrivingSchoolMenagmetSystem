@@ -29,6 +29,7 @@ public class LessonEntity {
 
     @ManyToOne
     @JoinColumn(name = "STUDENT_ID", referencedColumnName = "ID")
+    @JsonBackReference
     private StudentEntity student;
 
     @Column(name = "DATE")
