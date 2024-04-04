@@ -1,9 +1,13 @@
 package com.github.odyn666.appSchool.controller.auth;
 
+import com.github.odyn666.appSchool.controller.TrainerController;
 import com.github.odyn666.appSchool.dto.auth.TrainerRegistrationDto;
+import com.github.odyn666.appSchool.entity.TrainerEntity;
 import com.github.odyn666.appSchool.service.TrainerService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,12 +20,14 @@ import org.springframework.web.context.request.WebRequest;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping
+@Slf4j
 public class AuthController {
 
+    private final TrainerController trainerController;
     private final TrainerService trainerService;
 
     @GetMapping("/trainer/register")
-    public String registerTrainer(WebRequest request, Model model) {
+    public String registerTrainer( Model model) {
         TrainerRegistrationDto registrationDto = new TrainerRegistrationDto();
         model.addAttribute("trainer", registrationDto);
 
@@ -38,10 +44,26 @@ public class AuthController {
     }
 
     @PostMapping("/register/save")
-    public String registration(@Valid@ModelAttribute("trainer")TrainerRegistrationDto dto
-    , BindingResult result
-    , Model model)
-    {
+    public String registration(@Valid @ModelAttribute("trainer") TrainerRegistrationDto dto
+            , BindingResult result
+            , Model model) {
+
+        try {
+        TrainerEntity trainerByEmail = trainerController.getTrainerByEmail(dto.getEmail()).getBody();
+
+        if (trainerByEmail != null && trainerByEmail.getEmail() != null && !trainerByEmail.getEmail().isEmpty()) {
+            result.rejectValue("email", null,
+                    "There is already an account registered with the same email");
+        }
+        }catch (Exception e){}
+
+        if (result.hasErrors()) {
+            model.addAttribute("trainer", dto);
+            log.error(result.getAllErrors().toString());
+            return "redirect:/trainer/register?failed";
+        }
+
+        trainerController.createTrainer(dto);
         return "redirect:/trainer/register?success";
     }
 

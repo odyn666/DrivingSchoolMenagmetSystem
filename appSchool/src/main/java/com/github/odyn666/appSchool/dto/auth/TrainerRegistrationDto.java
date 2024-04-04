@@ -1,5 +1,6 @@
 package com.github.odyn666.appSchool.dto.auth;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,15 +9,14 @@ import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @AllArgsConstructor
-@NoArgsConstructor(force = true)
 public class TrainerRegistrationDto {
 
-    private final @NotEmpty String firstName;
-    private final @NotEmpty String lastName;
-    private final String identifier;
-    private final @NotEmpty String phoneNumber;
-    private final @NotEmpty String email;
+    private @NotEmpty String firstName;
+    private @NotEmpty String lastName;
+    private @NotEmpty String phoneNumber;
+    private @NotEmpty @Email String email;
     private String password;
     private String matchingPassword;
 

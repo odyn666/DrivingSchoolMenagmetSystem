@@ -8,6 +8,7 @@ import com.github.odyn666.appSchool.entity.enums.Status;
 import com.github.odyn666.appSchool.exception.exceptions.TrainerNotFoundException;
 import com.github.odyn666.appSchool.mapper.TrainerMapper;
 import com.github.odyn666.appSchool.repository.TrainerEntityRepository;
+import com.github.odyn666.appSchool.utils.PasswordHasher;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,11 +24,13 @@ public class TrainerService {
 
     private final TrainerEntityRepository trainerRepository;
     private final TrainerMapper trainerMapper;
+    private final PasswordHasher passwordHasher;
 
 
     //*CREATE
     @Transactional
     public TrainerEntity saveTrainer(TrainerEntity entity) {
+        entity.setPassword(passwordHasher.hashPassword(entity.getPassword()));
         return trainerRepository.save(entity);
     }
 
@@ -36,7 +39,6 @@ public class TrainerService {
         TrainerEntity trainer = new TrainerEntity();
         trainer.setFirstName(dto.getFirstName());
         trainer.setLastName(dto.getLastName());
-        trainer.setIdentifier(dto.getIdentifier());
         trainer.setPhoneNumber(dto.getPhoneNumber());
         trainer.setEmail(dto.getEmail());
 
@@ -49,6 +51,10 @@ public class TrainerService {
         return trainers.stream()
                 .map(trainerMapper::toDto)
                 .toList();
+    }
+
+    public List<TrainerEntity>getAllTrainerEntities(){
+        return trainerRepository.findAll();
     }
 
     public TrainerEntity getTrainerByID(Long id) {
@@ -74,8 +80,11 @@ public class TrainerService {
         return trainerMapper.toDto(trainerEntity);
     }
 
-    public List<LessonEntity> findAllTrainerLessonsByTrainerID(Long id) {
+    public List<LessonEntity> getAllTrainerLessonsByTrainerID(Long id) {
         return trainerRepository.findAllLessonsForTrainer(id).orElseThrow(TrainerNotFoundException::new);
+    }
+    public TrainerEntity getTrainerByEmail(String email) {
+        return trainerRepository.findTrainerEntityByEmail(email).orElseThrow(TrainerNotFoundException::new);
     }
 
     @Transactional
@@ -96,6 +105,7 @@ public class TrainerService {
     public Boolean trainerEmailExists(String email) {
         return trainerRepository.existsTrainerEntityByEmail(email);
     }
+
 
     //*UPDATE
 
