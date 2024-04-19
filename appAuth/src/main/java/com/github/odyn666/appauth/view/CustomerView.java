@@ -1,18 +1,10 @@
 package com.github.odyn666.appauth.view;
 
 import com.github.odyn666.appauth.dto.StudentEntityDto;
-import com.github.odyn666.appauth.repository.StudentDTORepository;
 import com.github.odyn666.appauth.service.StudentDTOService;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
