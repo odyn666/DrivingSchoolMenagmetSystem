@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -35,6 +36,14 @@ public class StudentService {
         StudentEntityDto dto = studentMapper.toDto(entity);
 
         return dto;
+    }
+
+    public List<StudentEntity> getAllStudents() {
+        return studentRepository.findAll();
+    }
+
+    public List<StudentEntityDto> getAllStudentDTOs() {
+        return studentRepository.findAll().stream().map(studentMapper::toDto).toList();
     }
 
     public List<StudentEntityDto> findStudentByEmail(String email) {

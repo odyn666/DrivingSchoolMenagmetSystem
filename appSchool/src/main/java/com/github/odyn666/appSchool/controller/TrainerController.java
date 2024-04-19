@@ -30,9 +30,15 @@ public class TrainerController {
     public ResponseEntity<TrainerEntity> findTrainerByID(@PathVariable Long id) {
         return ResponseEntity.ok(trainerService.getTrainerByID(id));
     }
+
     @GetMapping("/trainer/all")
-    public ResponseEntity<List<TrainerEntity>>getAllTrainerEntities(){
+    public ResponseEntity<List<TrainerEntity>> getAllTrainerEntities() {
         return ResponseEntity.ok(trainerService.getAllTrainerEntities());
+    }
+
+    @GetMapping("/trainers")
+    public ResponseEntity<List<TrainerEntityDto>> getAllTrainers() {
+        return ResponseEntity.ok(trainerService.getTrainers());
     }
 
     @GetMapping("/status")
@@ -61,7 +67,7 @@ public class TrainerController {
     }
 
     @GetMapping("/trainer/email")
-    public ResponseEntity<TrainerEntity>getTrainerByEmail(String email) {
+    public ResponseEntity<TrainerEntity> getTrainerByEmail(String email) {
         return ResponseEntity.ok(trainerService.getTrainerByEmail(email));
     }
 }

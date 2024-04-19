@@ -40,6 +40,9 @@ public class TrainerService {
         trainer.setFirstName(dto.getFirstName());
         trainer.setLastName(dto.getLastName());
         trainer.setPhoneNumber(dto.getPhoneNumber());
+        trainer.setPassword(passwordHasher.hashPassword(dto.getPassword()));
+        trainer.setStatus(Status.ACTIVE);
+        trainer.setStudentsPassRate(0);
         trainer.setEmail(dto.getEmail());
 
         return trainerRepository.save(trainer);
@@ -53,7 +56,7 @@ public class TrainerService {
                 .toList();
     }
 
-    public List<TrainerEntity>getAllTrainerEntities(){
+    public List<TrainerEntity> getAllTrainerEntities() {
         return trainerRepository.findAll();
     }
 
@@ -83,6 +86,7 @@ public class TrainerService {
     public List<LessonEntity> getAllTrainerLessonsByTrainerID(Long id) {
         return trainerRepository.findAllLessonsForTrainer(id).orElseThrow(TrainerNotFoundException::new);
     }
+
     public TrainerEntity getTrainerByEmail(String email) {
         return trainerRepository.findTrainerEntityByEmail(email).orElseThrow(TrainerNotFoundException::new);
     }

@@ -29,8 +29,10 @@ public class SmsController {
 
         Twilio.init(config.getSid(), config.getToken());
 
-        Message.creator(new PhoneNumber("+48534296847"),
-                new PhoneNumber("+16505177842"), "Chyba Działa").create();
+        PhoneNumber to = new PhoneNumber("+48534296847");
+        PhoneNumber from = new PhoneNumber("+16505177842");
+        Message.creator(to,
+                from, "Chyba Działa").create();
 
         return new ResponseEntity<String>("Message sent successfully", HttpStatus.OK);
     }

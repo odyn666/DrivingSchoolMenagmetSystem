@@ -182,7 +182,7 @@ class TrainerServiceDiffblueTest {
 
         // Act
         TrainerEntity actualSaveTrainerResult = trainerService
-                .saveTrainer(new TrainerRegistrationDto("Jane", "Doe", "42", "6625550144", "jane.doe@example.org","",""));
+                .saveTrainer(new TrainerRegistrationDto("Jane", "Doe", "42", "jane.doe@example.org","",""));
 
         // Assert
         verify(trainerEntityRepository).save(isA(TrainerEntity.class));
@@ -544,7 +544,7 @@ class TrainerServiceDiffblueTest {
 
     /**
      * Method under test:
-     * {@link TrainerService#findAllTrainerLessonsByTrainerID(Long)}
+     * {@link TrainerService#getAllTrainerLessonsByTrainerID(Long)}
      */
     @Test
     void testFindAllTrainerLessonsByTrainerID() {
@@ -555,7 +555,7 @@ class TrainerServiceDiffblueTest {
 
         // Act
         List<LessonEntity> actualFindAllTrainerLessonsByTrainerIDResult = trainerService
-                .findAllTrainerLessonsByTrainerID(1L);
+                .getAllTrainerLessonsByTrainerID(1L);
 
         // Assert
         verify(trainerEntityRepository).findAllLessonsForTrainer(isA(Long.class));
@@ -565,7 +565,7 @@ class TrainerServiceDiffblueTest {
 
     /**
      * Method under test:
-     * {@link TrainerService#findAllTrainerLessonsByTrainerID(Long)}
+     * {@link TrainerService#getAllTrainerLessonsByTrainerID(Long)}
      */
     @Test
     void testFindAllTrainerLessonsByTrainerID2() {
@@ -574,7 +574,7 @@ class TrainerServiceDiffblueTest {
                 .thenThrow(new TrainerNotFoundException());
 
         // Act and Assert
-        assertThrows(TrainerNotFoundException.class, () -> trainerService.findAllTrainerLessonsByTrainerID(1L));
+        assertThrows(TrainerNotFoundException.class, () -> trainerService.getAllTrainerLessonsByTrainerID(1L));
         verify(trainerEntityRepository).findAllLessonsForTrainer(isA(Long.class));
     }
 

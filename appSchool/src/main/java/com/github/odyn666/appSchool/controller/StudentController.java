@@ -30,6 +30,14 @@ public class StudentController {
     public ResponseEntity<StudentEntityDto> getStudentById(@PathVariable Long id) {
         return ResponseEntity.ok(studentService.findStudentById(id));
     }
+    @GetMapping("/allDto")
+    public ResponseEntity<List<StudentEntityDto>> getAllStudentDTOs(){
+        return ResponseEntity.ok(studentService.getAllStudentDTOs());
+    }
+    @GetMapping("/all")
+    public ResponseEntity<List<StudentEntity>> getAllStudentEntities(){
+        return ResponseEntity.ok(studentService.getAllStudents());
+    }
 
     @GetMapping("/email/")
     public ResponseEntity<List<StudentEntityDto>> getStudentByEmail(@PathParam("email") String email) {

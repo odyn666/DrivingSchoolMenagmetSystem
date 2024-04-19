@@ -7,9 +7,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class PasswordHasher {
 
-    private BCryptPasswordEncoder passwordEncoder;
+    private final BCryptPasswordEncoder passwordEncoder=new BCryptPasswordEncoder();
 
     public String hashPassword(String password) {
+
         return passwordEncoder.encode(password);
     }
 }

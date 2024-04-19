@@ -27,7 +27,7 @@ public class AuthController {
     private final TrainerService trainerService;
 
     @GetMapping("/trainer/register")
-    public String registerTrainer( Model model) {
+    public String registerTrainer(Model model) {
         TrainerRegistrationDto registrationDto = new TrainerRegistrationDto();
         model.addAttribute("trainer", registrationDto);
 
@@ -49,13 +49,14 @@ public class AuthController {
             , Model model) {
 
         try {
-        TrainerEntity trainerByEmail = trainerController.getTrainerByEmail(dto.getEmail()).getBody();
+            TrainerEntity trainerByEmail = trainerController.getTrainerByEmail(dto.getEmail()).getBody();
 
-        if (trainerByEmail != null && trainerByEmail.getEmail() != null && !trainerByEmail.getEmail().isEmpty()) {
-            result.rejectValue("email", null,
-                    "There is already an account registered with the same email");
+            if (trainerByEmail != null && trainerByEmail.getEmail() != null && !trainerByEmail.getEmail().isEmpty()) {
+                result.rejectValue("email", null,
+                        "There is already an account registered with the same email");
+            }
+        } catch (Exception e) {
         }
-        }catch (Exception e){}
 
         if (result.hasErrors()) {
             model.addAttribute("trainer", dto);
@@ -66,6 +67,8 @@ public class AuthController {
         trainerController.createTrainer(dto);
         return "redirect:/trainer/register?success";
     }
+
+
 
     private Boolean isMatchingPassword(String password, String matchingPassword) {
         return password.equals(matchingPassword);
