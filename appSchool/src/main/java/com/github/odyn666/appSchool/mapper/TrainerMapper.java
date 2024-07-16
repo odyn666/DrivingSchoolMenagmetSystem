@@ -19,6 +19,7 @@ public class TrainerMapper {
                 entity.getPhoneNumber(),
                 entity.getEmail(),
                 fPassRate,
+                entity.getPassword(),
                 entity.getTrainerOpinions()
         );
     }
@@ -26,7 +27,9 @@ public class TrainerMapper {
     public TrainerEntity toEntity(TrainerEntityDto dto) {
 
         float fPassRate = dto.getStudentsPassRate()*10;
-        Integer iPassRate = Integer.parseInt(Float.toString(fPassRate));
+        Integer iPassRate = Math.round(fPassRate);
+
+
 
         TrainerEntity entity = new TrainerEntity();
         entity.setFirstName(dto.getFirstName());
@@ -35,6 +38,7 @@ public class TrainerMapper {
         entity.setPhoneNumber(dto.getPhoneNumber());
         entity.setEmail(dto.getEmail());
         entity.setStudentsPassRate(iPassRate);
+        entity.setPassword(dto.getPassword());
         entity.setTrainerOpinions(dto.getTrainerOpinions());
         return entity;
     }
