@@ -4,6 +4,7 @@ import com.github.odyn666.appSchool.dto.*;
 import com.github.odyn666.appSchool.entity.LessonEntity;
 import com.github.odyn666.appSchool.entity.StudentEntity;
 import com.github.odyn666.appSchool.entity.enums.LessonStatus;
+import com.github.odyn666.appSchool.exception.exceptions.BadRegisterCredentialsException;
 import com.github.odyn666.appSchool.exception.exceptions.LessonNotFoundException;
 import com.github.odyn666.appSchool.exception.exceptions.StudentNotFoundException;
 import com.github.odyn666.appSchool.exception.exceptions.TrainerNotFoundException;
@@ -18,7 +19,8 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Objects;
+import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
@@ -33,9 +35,8 @@ public class StudentService {
 
     public StudentEntityDto findStudentById(Long id) {
         StudentEntity entity = studentRepository.findById(id).orElseThrow(StudentNotFoundException::new);
-        StudentEntityDto dto = studentMapper.toDto(entity);
 
-        return dto;
+        return studentMapper.toDto(entity);
     }
 
     public List<StudentEntity> getAllStudents() {
@@ -54,6 +55,10 @@ public class StudentService {
     }
 
     public StudentEntity registerStudent(StudentRegisterDto dto) {
+
+       if( !validateRegistration(dto)){
+           throw new BadRegisterCredentialsException() ;
+       }
         StudentEntity entity = new StudentEntity();
         entity.setFirstName(dto.getFirstName());
         entity.setLastName(dto.getLastName());
@@ -62,6 +67,16 @@ public class StudentService {
         entity.setPhoneNumber(dto.getPhoneNumber());
 
         return studentRepository.save(entity);
+    }
+
+    private boolean validateRegistration(StudentRegisterDto dto) {
+        boolean result = Stream.of(dto.getEmail(), dto.getPassword(), dto.getPhoneNumber(), dto.getFirstName(), dto.getLastName(), dto.getMatchingPassword()).allMatch(Objects::nonNull);
+        if (!dto.getPassword().equals(dto.getMatchingPassword())){
+            throw new BadRegisterCredentialsException("hasła nie są takie same");
+        }
+        return result;
+
+
     }
 
     public LessonEntity findLessonById(Long id) {
