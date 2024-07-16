@@ -1,21 +1,23 @@
 package com.github.odyn666.appSchool.controller.auth;
 
-import com.github.odyn666.appSchool.controller.TrainerController;
-import com.github.odyn666.appSchool.dto.auth.TrainerRegistrationDto;
-import com.github.odyn666.appSchool.entity.TrainerEntity;
-import com.github.odyn666.appSchool.service.TrainerService;
-import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
+import com.github.odyn666.appSchool.dto.TrainerEntityDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.context.request.WebRequest;
+
+import com.github.odyn666.appSchool.controller.TrainerController;
+import com.github.odyn666.appSchool.dto.auth.TrainerRegistrationDto;
+import com.github.odyn666.appSchool.entity.TrainerEntity;
+import com.github.odyn666.appSchool.service.TrainerService;
+
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequiredArgsConstructor
@@ -38,10 +40,26 @@ public class AuthController {
         return "trainerRegistration";
     }
 
-    @GetMapping
+    @GetMapping()
     public String homePage() {
         return "index";
     }
+
+    @GetMapping("/login")
+    public String trainerLogin(ModelMap map) {
+        map.addAttribute("TrainerEntityDto",new TrainerEntityDto());
+
+        return "trainerLogin";
+    }
+
+    @PostMapping("/login")
+    public String successfulLogin(ModelMap map, TrainerEntityDto dto) {
+
+        boolean isUserValid = trainerService.validateTrainerLogin(dto.getIdentifier(), dto.getPassword());
+        map.addAttribute("TrainerEntityDto", dto);
+        return "trainerDashboard";
+    }
+
 
     @PostMapping("/register/save")
     public String registration(@Valid @ModelAttribute("trainer") TrainerRegistrationDto dto
@@ -52,7 +70,7 @@ public class AuthController {
             TrainerEntity trainerByEmail = trainerController.getTrainerByEmail(dto.getEmail()).getBody();
 
             if (trainerByEmail != null && trainerByEmail.getEmail() != null && !trainerByEmail.getEmail().isEmpty()) {
-                result.rejectValue("email", null,
+                result.rejectValue("identifier", null,
                         "There is already an account registered with the same email");
             }
         } catch (Exception e) {
@@ -67,7 +85,6 @@ public class AuthController {
         trainerController.createTrainer(dto);
         return "redirect:/trainer/register?success";
     }
-
 
 
     private Boolean isMatchingPassword(String password, String matchingPassword) {
