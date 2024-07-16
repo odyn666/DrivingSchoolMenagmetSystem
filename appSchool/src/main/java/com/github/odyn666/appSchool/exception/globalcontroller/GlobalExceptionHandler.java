@@ -1,9 +1,6 @@
 package com.github.odyn666.appSchool.exception.globalcontroller;
 
-import com.github.odyn666.appSchool.exception.exceptions.CarNotFoundException;
-import com.github.odyn666.appSchool.exception.exceptions.LessonNotFoundException;
-import com.github.odyn666.appSchool.exception.exceptions.StudentNotFoundException;
-import com.github.odyn666.appSchool.exception.exceptions.TrainerNotFoundException;
+import com.github.odyn666.appSchool.exception.exceptions.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -29,6 +26,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(LessonNotFoundException.class)
     public ResponseEntity<String> handleLessonNotFoundException(LessonNotFoundException ex) {
         return ResponseEntity.status(404).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(BadRegisterCredentialsException.class)
+    public ResponseEntity<String> handleBadRegisterCredentials(BadRegisterCredentialsException ex){
+        return ResponseEntity.status(401).body(ex.getMessage());
     }
 
 }
