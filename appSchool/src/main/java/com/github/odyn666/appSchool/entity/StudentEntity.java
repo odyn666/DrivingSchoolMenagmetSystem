@@ -38,6 +38,9 @@ public class StudentEntity {
     @Column(name = "PHONE_NUMBER", nullable = false)
     private String phoneNumber;
 
+    @Column(name="BLOCKED",nullable = false)
+    private Boolean isBlocked;
+
     @Column(name = "STATUS", nullable = false)
     @Enumerated(EnumType.STRING)
     private Status status;
