@@ -3,10 +3,7 @@ package com.github.odyn666.appSchool.dto;
 import com.github.odyn666.appSchool.entity.TrainerEntity;
 import com.github.odyn666.appSchool.entity.TrainerOpinions;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -18,18 +15,22 @@ import java.util.Objects;
  */
 @Getter
 @Setter
+@NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
 public final class TrainerEntityDto implements Serializable {
     @Serial
     private static final long serialVersionUID = 0L;
-    private final @NotEmpty String firstName;
-    private final @NotEmpty String lastName;
-    private final String identifier;
-    private final String phoneNumber;
-    private final String email;
-    private final Float studentsPassRate;
-    private final List<TrainerOpinions> trainerOpinions;
+    @NotEmpty
+    private String firstName;
+    @NotEmpty
+    private String lastName;
+    private String identifier;
+    private String phoneNumber;
+    private String email;
+    private Float studentsPassRate;
+    private String password;
+    private List<TrainerOpinions> trainerOpinions;
 
 
     @Override
