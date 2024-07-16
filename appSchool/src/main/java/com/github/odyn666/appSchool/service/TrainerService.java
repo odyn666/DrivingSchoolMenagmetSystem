@@ -110,6 +110,11 @@ public class TrainerService {
         return trainerRepository.existsTrainerEntityByEmail(email);
     }
 
+    public boolean validateTrainerLogin(String identifier, String password) {
+        TrainerEntity trainer = trainerMapper.toEntity(getTrainerByIdentifier(identifier));
+        return trainer.getPassword().equals(password);
+    }
+
 
     //*UPDATE
 
