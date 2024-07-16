@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS students (
     last_name VARCHAR(128),
     pkk_number VARCHAR(128),
     status VARCHAR(128),
+    blocked BOOLEAN,
     phone_number VARCHAR(128),
     email VARCHAR(128),
     password VARCHAR(128),
