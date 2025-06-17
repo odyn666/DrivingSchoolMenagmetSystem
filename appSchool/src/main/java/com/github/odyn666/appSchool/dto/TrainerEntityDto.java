@@ -2,6 +2,7 @@ package com.github.odyn666.appSchool.dto;
 
 import com.github.odyn666.appSchool.entity.TrainerEntity;
 import com.github.odyn666.appSchool.entity.TrainerOpinions;
+import com.github.odyn666.appSchool.entity.enums.Status;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -30,6 +31,7 @@ public final class TrainerEntityDto implements Serializable {
     private final String email;
     private final Float studentsPassRate;
     private final List<TrainerOpinions> trainerOpinions;
+    private final Status status;
 
 
     @Override

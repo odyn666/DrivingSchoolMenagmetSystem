@@ -1,18 +1,21 @@
 package com.github.odyn666.appSchool.service;
 
 import com.github.odyn666.appSchool.dto.*;
+import com.github.odyn666.appSchool.entity.ArchiveEntity;
 import com.github.odyn666.appSchool.entity.LessonEntity;
 import com.github.odyn666.appSchool.entity.StudentEntity;
 import com.github.odyn666.appSchool.entity.enums.LessonStatus;
-import com.github.odyn666.appSchool.exception.exceptions.LessonNotFoundException;
-import com.github.odyn666.appSchool.exception.exceptions.StudentNotFoundException;
-import com.github.odyn666.appSchool.exception.exceptions.TrainerNotFoundException;
+import com.github.odyn666.appSchool.entity.enums.Status;
+import com.github.odyn666.appSchool.exception.exceptions.*;
 import com.github.odyn666.appSchool.mapper.LessonMapper;
 import com.github.odyn666.appSchool.mapper.StudentMapper;
+import com.github.odyn666.appSchool.repository.ArchiveRepository;
 import com.github.odyn666.appSchool.repository.LessonEntityRepository;
 import com.github.odyn666.appSchool.repository.StudentEntityRepository;
 import com.github.odyn666.appSchool.repository.TrainerEntityRepository;
 import com.github.odyn666.appSchool.utils.PasswordHasher;
+import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +32,7 @@ public class StudentService {
     private final LessonEntityRepository lessonRepository;
     private final TrainerEntityRepository trainerEntityRepository;
     private final LessonMapper lessonMapper;
+    private final ArchiveRepository archiveRepository;
 
     public StudentEntityDto findStudentById(Long id) {
         StudentEntity entity = studentRepository.findById(id).orElseThrow(StudentNotFoundException::new);
@@ -92,4 +96,37 @@ public class StudentService {
     public List<LessonEntity> getLessonsByStudentId(Long id) {
         return lessonRepository.findAllByStudentId(id);
     }
+
+    public List<StudentEntity> getStudentByStatus(@Valid Status status) {
+
+        return studentRepository.findAllByStatus(status);
+    }
+
+    //! TODO REDO FUNCTION // TEMP LOGIC
+    @Transactional
+    public void deleteAndArchiveStudentById(long studentId) {
+        StudentEntity student = studentRepository.findById(studentId)
+                .orElseThrow(() -> new RuntimeException("Student not found"));
+
+        ArchiveEntity archive = archiveRepository.findById(1).orElseThrow(ArchiveNotFoundException::new);
+
+        List<StudentEntity> pastStudents = archive.getPastStudents();
+        pastStudents.add(student);
+        archive.setPastStudents(pastStudents);
+
+        studentRepository.delete(student);
+        archiveRepository.save(archive);
+    }
+
+    public StudentEntity blockStudentById(Long id) {
+        StudentEntity studentEntity = studentRepository.findById(id).orElseThrow(StudentNotFoundException::new);
+        if (studentEntity.getIsBlocked())
+        {
+            throw new StudentWasBlocked();
+        }
+        studentEntity.setIsBlocked(true);
+        return studentRepository.save(studentEntity);
+    }
+
+
 }

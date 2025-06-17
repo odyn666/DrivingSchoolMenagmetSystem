@@ -13,5 +13,6 @@ CREATE TABLE IF NOT EXISTS students (
     exams_failed INTEGER,
     lessons_attended INTEGER,
     lessons_omitted INTEGER,
-    is_final_exam_passed BOOLEAN
+    is_final_exam_passed BOOLEAN,
+    is_student_blocked BOOLEAN
 )

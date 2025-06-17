@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 //@RequestMapping("/api/auth")
 public class AuthController {
-//    @GetMapping("/trainer/register")
+    //    @GetMapping("/trainer/register")
     public ResponseEntity<TrainerRegistrationDto> registerTrainer(@RequestBody TrainerRegistrationDto dto) {
 
 //TODO FIX AUTHORISATION

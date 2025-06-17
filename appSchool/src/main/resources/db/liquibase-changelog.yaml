@@ -89,3 +89,21 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: true
             stripComments: true
+  - changeSet:
+      id: 11_create_archive_entity.sql
+      author: postgres
+      changes:
+        - sqlFile:
+            path: scripts/11_create_archive_entity.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+  - changeSet:
+      id: 12_create_dummy_data_v2.sql
+      author: postgres
+      changes:
+        - sqlFile:
+            path: scripts/12_create_dummy_data_v2.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

@@ -26,6 +26,8 @@ public class AuthController {
     private final TrainerController trainerController;
     private final TrainerService trainerService;
 
+
+
     @GetMapping("/trainer/register")
     public String registerTrainer( Model model) {
         TrainerRegistrationDto registrationDto = new TrainerRegistrationDto();
@@ -38,7 +40,7 @@ public class AuthController {
         return "trainerRegistration";
     }
 
-    @GetMapping
+    @GetMapping("/")
     public String homePage() {
         return "index";
     }

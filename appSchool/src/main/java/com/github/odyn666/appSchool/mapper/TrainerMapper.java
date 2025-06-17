@@ -19,7 +19,8 @@ public class TrainerMapper {
                 entity.getPhoneNumber(),
                 entity.getEmail(),
                 fPassRate,
-                entity.getTrainerOpinions()
+                entity.getTrainerOpinions(),
+                entity.getStatus()
         );
     }
 

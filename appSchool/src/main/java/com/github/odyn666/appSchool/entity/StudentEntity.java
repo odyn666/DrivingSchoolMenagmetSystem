@@ -74,4 +74,12 @@ public class StudentEntity {
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<LessonEntity> lessons;
+
+    @Column(name = "is_student_blocked")
+    private Boolean isBlocked=false;
+
+    //! TODO delete if not needed
+//    @ManyToOne
+//    @JoinColumn(name = "archive_id")
+//    private ArchiveEntity archive;
 }
